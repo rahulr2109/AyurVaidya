@@ -14,7 +14,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../api/users";
 import ErrorAlert from "../ErrorAlert";
 import { loginUser } from "../../helpers/authHelper";
-import Copyright from "../Copyright";
+
 
 const LoginView = () => {
   const navigate = useNavigate();

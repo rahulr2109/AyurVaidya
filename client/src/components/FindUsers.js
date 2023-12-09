@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { AiOutlineUser } from "react-icons/ai";
+import { RiRefreshFill } from "react-icons/ri";
 import { MdRefresh } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { getRandomUsers } from "../api/users";
@@ -15,6 +15,7 @@ import Loading from "./Loading";
 import UserAvatar from "./UserAvatar";
 import HorizontalStack from "./util/HorizontalStack";
 import UserEntry from "./UserEntry";
+import { SiGooglescholar } from "react-icons/si";
 
 const FindUsers = () => {
   const [loading, setLoading] = useState(true);
@@ -39,19 +40,19 @@ const FindUsers = () => {
   // console.log(users);
 
   return (
-    <Card>
+    <Card sx={{ backgroundColor: "#527C88" }}>
       <Stack spacing={2} sx={{ padding: "10px" }}>
         <HorizontalStack justifyContent="space-between">
           <HorizontalStack>
-            <AiOutlineUser />
-            <Typography>Find Others</Typography>
+            <SiGooglescholar />
+            <Typography>See Scholars</Typography>
           </HorizontalStack>
           <IconButton
             sx={{ padding: 0 }}
             disabled={loading}
             onClick={handleClick}
           >
-            <MdRefresh />
+            <RiRefreshFill style={{ color: "#1B1B1D" }} />
           </IconButton>
         </HorizontalStack>
 

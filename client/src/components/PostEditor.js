@@ -54,7 +54,7 @@ const PostEditor = () => {
   };
 
   return (
-    <Card sx={{ padding: "15px" }}>
+    <Card sx={{ padding: "15px", }}>
       <Stack spacing={1}>
         {user && (
           <HorizontalStack spacing={2}>
@@ -66,7 +66,7 @@ const PostEditor = () => {
         )}
 
 
-        <Box component="form" onSubmit={handleSubmit}>
+        <Box component="form" onSubmit={handleSubmit} sx={{ backgroundColor: "#AFC2C7" }}>
           <TextField
             fullWidth
             label="Title"

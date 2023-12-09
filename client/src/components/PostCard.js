@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { deletePost, likePost, unlikePost, updatePost } from "../api/posts";
 import { isLoggedIn } from "../helpers/authHelper";
 import ContentDetails from "./ContentDetails";
-
+import { IconContext } from "react-icons";
 import LikeBox from "./LikeBox";
 import PostContentBox from "./PostContentBox";
 import HorizontalStack from "./util/HorizontalStack";
@@ -27,6 +27,7 @@ import { MdCancel } from "react-icons/md";
 import { BiTrash } from "react-icons/bi";
 import { BsReplyFill } from "react-icons/bs";
 import UserLikePreview from "./UserLikePreview";
+
 
 const PostCard = (props) => {
   const { preview, removePost } = props;
@@ -98,7 +99,7 @@ const PostCard = (props) => {
   // console.log(post);
 
   return (
-    <Card sx={{ padding: 0, backgroundColor: "white", }} className="post-card">
+    <Card sx={{ padding: 0, backgroundColor: "#afc2c7", }}>
       <Box className={preview}>
         <HorizontalStack spacing={0} alignItems="initial">
           <Stack
@@ -117,7 +118,9 @@ const PostCard = (props) => {
               onLike={handleLike}
             />
             <Stack alignItems={"center"}>
-              <AiFillMessage />
+              <IconContext.Provider value={{ color: theme.palette.primary.main }}>
+                <AiFillMessage style={{ height: "20px", width: "20px", cursor: "pointer" }} onClick={() => navigate("/posts/" + post._id)} />
+              </IconContext.Provider>
               <Typography
                 variant="subtitle2"
                 color="text.secondary"

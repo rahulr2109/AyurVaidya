@@ -30,12 +30,13 @@ import { useEffect } from "react";
 import { BASE_URL } from "./config";
 import { io } from "socket.io-client";
 import { createTheme } from "@mui/material";
+import Home from "./components/views/Home";
 
 
 const ntheme = createTheme({
   palette: {
-    primary: { main: "#343435" },
-    secondary: { main: "#000000" },
+    primary: { main: "#2e4450 " },
+    secondary: { main: "#527c88 " },
   },
   typography: {
     fontFamily: 'monospace',
@@ -57,7 +58,8 @@ function App() {
       <BrowserRouter>
         <CssBaseline />
         <Routes>
-          <Route path="/" element={<ExploreView />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/question" element={<ExploreView />} />
           <Route path="/posts/:id" element={<PostView />} />
           <Route
             path="/posts/create"

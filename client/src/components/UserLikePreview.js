@@ -4,6 +4,7 @@ import HorizontalStack from "./util/HorizontalStack";
 import { AiFillLike } from "react-icons/ai";
 import UserLikeModal from "./UserLikeModal";
 import { getUser } from "../api/users";
+import { FaArrowAltCircleUp } from "react-icons/fa";
 
 const UserLikePreview = ({ postId, userLikePreview }) => {
   const [open, setOpen] = useState(false);
@@ -27,7 +28,7 @@ const UserLikePreview = ({ postId, userLikePreview }) => {
         <Button
           variant="outlined"
           size="small"
-          startIcon={<AiFillLike />}
+          startIcon={<FaArrowAltCircleUp />}
           color="primary"
           onClick={handleClick}
         >

@@ -12,6 +12,7 @@ import PostCard from "./PostCard";
 import SortBySelect from "./SortBySelect";
 import HorizontalStack from "./util/HorizontalStack";
 
+
 const PostBrowser = (props) => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -117,7 +118,7 @@ const PostBrowser = (props) => {
   return (
     <>
       <Stack spacing={2}>
-        <Card sx={{ background: "#343435" }}>
+        <Card sx={{ background: "#2E4450" }}>
           <HorizontalStack justifyContent="space-between"  >
             {props.createPost && <CreatePost />}
             <SortBySelect
@@ -129,7 +130,7 @@ const PostBrowser = (props) => {
         </Card>
 
         {searchExists && (
-          <Box>
+          <Box sx={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
             <Typography variant="h5" gutterBottom>
               Showing results for "{search.get("search")}"
             </Typography>
@@ -153,9 +154,9 @@ const PostBrowser = (props) => {
           <Stack py={5} alignItems="center">
             <Typography variant="h5" color="text.secondary" gutterBottom>
               {posts.length > 0 ? (
-                <>All posts have been viewed</>
+                <>All Questions have been viewed</>
               ) : (
-                <>No posts available</>
+                <>No Questions available</>
               )}
             </Typography>
             <Button variant="text" size="small" onClick={handleBackToTop}>

@@ -11,6 +11,7 @@ const loginUser = (user) => {
 
 const logoutUser = () => {
   localStorage.removeItem("user");
+  localStorage.clear();
   initiateSocketConnection();
 };
 

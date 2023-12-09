@@ -41,6 +41,16 @@ const UserSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    isExpert: {
+      type: Boolean,
+      default: false,
+
+    }
+    ,
+    userHistory: {
+      type: mongoose.Types.ObjectId,
+      ref: "UserHistory",
+    }
   },
   { timestamps: true }
 );

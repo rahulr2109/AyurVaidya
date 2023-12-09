@@ -18,6 +18,7 @@ const ContentDetails = ({ username, createdAt, edited, preview, Profile }) => {
             e.stopPropagation();
           }}
           to={"/users/" + username}
+          style={{ color: "black", textDecoration: "none" }}
         >
           {username}
         </Link>

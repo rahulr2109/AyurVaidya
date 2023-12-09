@@ -106,11 +106,11 @@ const SignupView = () => {
   };
 
   return (
-    <Container maxWidth={"xs"} sx={{ mt: { xs: 2, md: 6 } }}>
-      <Stack alignItems="center">
+    <Container maxWidth={"xs"} sx={{ mt: { xs: 2, md: 6 }, backgroundColor: "white", padding: "10px", borderRadius: "10px" }}>
+      <Stack alignItems="center" >
         <Typography variant="h2" color="text.secondary" sx={{ mb: 6 }}>
-          <Link to="/" color="inherit" style={{ color: "#65D6AA", textDecoration: "none" }}>
-            Quota
+          <Link to="/" color="inherit" style={{ color: "#87AD3F", textDecoration: "none" }}>
+            AyurVaidya
           </Link>
         </Typography>
         <Typography variant="h5" gutterBottom>

@@ -38,7 +38,7 @@ const UserMessengerEntry = (props) => {
         <ListItemText
           primary={username}
 
-          sx={{ color: "#65D6AA" }}
+          sx={{ color: "#87AD3F" }}
         />
       </MenuItem>
     </>

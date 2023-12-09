@@ -17,9 +17,9 @@ const UserMessengerEntries = (props) => {
             spacing={2}
             sx={{ px: 2, height: "60px" }}
           >
-            <AiFillMessage size={30} style={{ color: "#65D6AA" }} />
+            <AiFillMessage size={30} style={{ color: "#87AD3F" }} />
             <Typography>
-              <b style={{ color: "#65D6AA" }}> Your Conversations</b>
+              <b style={{ color: "#87AD3F" }}> Your Conversations</b>
             </Typography>
           </HorizontalStack>
           <Divider />

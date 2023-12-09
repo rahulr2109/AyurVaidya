@@ -43,11 +43,11 @@ const LoginView = () => {
   };
 
   return (
-    <Container maxWidth={"xs"} sx={{ mt: 6 }}>
+    <Container maxWidth={"xs"} sx={{ mt: { xs: 2, md: 6 }, backgroundColor: "white", padding: "10px", borderRadius: "10px" }}>
       <Stack alignItems="center">
         <Typography variant="h2" color="text.secondary" sx={{ mb: 6 }}>
-          <Link to="/" color="inherit" style={{ textDecoration: "none", color: "#65D6AA" }}>
-            Quota
+          <Link to="/" color="inherit" style={{ textDecoration: "none", color: "#87AD3F" }}>
+            AyurVaidya
           </Link>
         </Typography>
         <Typography variant="h5" gutterBottom>

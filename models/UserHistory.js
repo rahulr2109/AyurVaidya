@@ -22,9 +22,6 @@ const UserHistory = new mongoose.Schema(
             ref: "Data",
             required: true,
         }
-
-
-
     },
 
 

@@ -188,7 +188,7 @@ const Messages = (props) => {
               userProfile={props.conservant.profile}
             />
             <Typography>
-              <Link to={"/users/" + props.conservant.username}>
+              <Link to={"/users/" + props.conservant.username} style={{ color: "#7C7C7C", textDecoration: "none" }}>
                 <b>{props.conservant.username}</b>
               </Link>
             </Typography>

@@ -19,9 +19,6 @@ const DataSchema = new mongoose.Schema(
 
         }
 
-
-
-
     },
     { timestamps: true }
 );

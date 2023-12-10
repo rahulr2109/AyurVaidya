@@ -67,6 +67,7 @@ const Comment = (props) => {
   if (depth % 2 === 1) {
     style.backgroundColor = "white";
   }
+  // console.log(comment)
 
   return (
     <Box sx={style}>
@@ -97,6 +98,7 @@ const Comment = (props) => {
                 username={comment.commenter.username}
                 createdAt={comment.createdAt}
                 edited={comment.edited}
+                Profile={comment.commenter.profile}
               />
 
               <IconButton
@@ -167,7 +169,7 @@ const Comment = (props) => {
                   comment={comment}
                   addComment={addComment}
                   setReplying={setReplying}
-                  label="What are your thoughts on this comment?"
+                  label="What are your thoughts on this answer?"
                 />
               </Box>
             )}

@@ -79,7 +79,7 @@ const UserLikeModal = ({ postId, open, setOpen }) => {
     };
   }, [userLikes]);
 
-  // console.log(userLikes)
+  console.log(userLikes)
 
   return (
     <Modal
@@ -100,7 +100,7 @@ const UserLikeModal = ({ postId, open, setOpen }) => {
       >
         <Card sx={{ padding: "10px" }}>
           <Typography variant="h5" mb={2}>
-            Likes
+            Upvotes
           </Typography>
           <Stack>
             <Stack spacing={2}>

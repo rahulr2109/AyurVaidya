@@ -33,6 +33,7 @@ const SendMessage = (props) => {
           onChange={(e) => setContent(e.target.value)}
           label="Send a message..."
           fullWidth
+          variant="standard"
           value={content}
           autoComplete="off"
           size="small"

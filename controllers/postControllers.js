@@ -16,16 +16,6 @@ const createPost = async (req, res) => {
       throw new Error("All input required");
     }
 
-    // if (cooldown.has(userId)) {
-    //   throw new Error(
-    //     "You are posting too frequently. Please try again shortly."
-    //   );
-    // }
-
-    // cooldown.add(userId);
-    // setTimeout(() => {
-    //   cooldown.delete(userId);
-    // }, 60000);
 
     const post = await Post.create({
       title,
@@ -241,6 +231,14 @@ const likePost = async (req, res) => {
     const postId = req.params.id;
     const { userId } = req.body;
 
+    const user = await User.findById(userId);
+
+    if (!user) {
+      throw new Error("User does not exist");
+    }
+
+    const profileId = user.profile;
+
     const post = await Post.findById(postId);
 
     if (!post) {
@@ -252,10 +250,12 @@ const likePost = async (req, res) => {
     if (existingPostLike) {
       throw new Error("Post is already liked");
     }
+    console.log(postId, userId, profileId);
 
     await PostLike.create({
       postId,
       userId,
+      profileId
     });
 
     post.likeCount = (await PostLike.find({ postId })).length;
@@ -305,7 +305,7 @@ const getUserLikes = async (req, res) => {
     const postLikesQuery = PostLike.find({ postId: postId })
       .sort("_id")
       .limit(USER_LIKES_PAGE_SIZE + 1)
-      .populate("userId", "username");
+      .populate("userId", "username", "profile");
 
     if (anchor) {
       postLikesQuery.where("_id").gt(anchor);
@@ -321,12 +321,15 @@ const getUserLikes = async (req, res) => {
       return {
         id: like._id,
         username: like.userId.username,
+        profile: like.userId.profile,
       };
     });
 
+
+
     return res
-      .status(400)
-      .json({ userLikes: userLikes, hasMorePages, success: true });
+      .status(200)
+      .json({ userLikes: postLikes, hasMorePages, success: true });
   } catch (err) {
     return res.status(400).json({ error: err.message });
   }

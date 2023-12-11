@@ -237,7 +237,7 @@ const likePost = async (req, res) => {
       throw new Error("User does not exist");
     }
 
-    const profileId = user.profile;
+    // const profileId = user.profile;
 
     const post = await Post.findById(postId);
 
@@ -250,17 +250,18 @@ const likePost = async (req, res) => {
     if (existingPostLike) {
       throw new Error("Post is already liked");
     }
-    console.log(postId, userId, profileId);
+    // console.log(postId, userId, profileId);
 
     await PostLike.create({
       postId,
       userId,
-      profileId
+      // profileId
     });
 
     post.likeCount = (await PostLike.find({ postId })).length;
 
     await post.save();
+    // console.log(postId, userId, profileId);
 
     return res.json({ success: true });
   } catch (err) {
@@ -301,11 +302,12 @@ const getUserLikes = async (req, res) => {
   try {
     const { postId } = req.params;
     const { anchor } = req.query;
+    // console.log(anchor)
 
     const postLikesQuery = PostLike.find({ postId: postId })
       .sort("_id")
       .limit(USER_LIKES_PAGE_SIZE + 1)
-      .populate("userId", "username", "profile");
+      .populate("userId");
 
     if (anchor) {
       postLikesQuery.where("_id").gt(anchor);
@@ -329,7 +331,7 @@ const getUserLikes = async (req, res) => {
 
     return res
       .status(200)
-      .json({ userLikes: postLikes, hasMorePages, success: true });
+      .json({ userLikes: userLikes, hasMorePages, success: true });
   } catch (err) {
     return res.status(400).json({ error: err.message });
   }

@@ -4,6 +4,8 @@ import { Card } from '@mui/material'
 import HorizontalStack from './util/HorizontalStack'
 import { Box } from '@mui/material'
 import HomeMainContainer from './HomeMainContainer'
+import ReactDOM from 'react-dom';
+
 
 const HomePanel = () => {
     return (<>

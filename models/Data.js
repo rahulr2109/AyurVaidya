@@ -4,19 +4,16 @@ const DataSchema = new mongoose.Schema(
     {
         Disease: {
             type: String,
-
         }
         ,
         Treatment: {
             type: String,
             required: true,
-
         }
         ,
         Remedies: {
             type: String,
             required: true,
-
         }
 
     },

@@ -74,7 +74,7 @@ const Home = () => {
 
                                     </Box>
                                     <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
-                                        <Box sx={{ height: "auto", border: "1px solid black", width: "60%", mt: "2rem", borderRadius: "10px" }}>
+                                        <Box sx={{ height: "auto", border: "1px solid black", width: "80%", mt: "2rem", borderRadius: "10px" }}>
                                             <Grid container sx={{ height: "100%", display: "flex", justifyContent: "center", alignItems: "center", padding: "20px", }}>
                                                 <Form />
                                             </Grid>

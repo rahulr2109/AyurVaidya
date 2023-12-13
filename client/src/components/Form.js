@@ -30,11 +30,11 @@ const Form = () => {
 
     return (
         <Box>
-            <Grid container spacing={2} justifyContent="center" alignItems="center">
+            <Grid container spacing={5} justifyContent="center" alignItems="center">
                 <Grid item xs={6}>
                     <TextField
                         label="Age"
-                        variant="outlined"
+                        variant="standard"
                         fullWidth
                         value={age}
                         onChange={(e) => setAge(e.target.value)}
@@ -44,7 +44,7 @@ const Form = () => {
                     <TextField
                         select
                         label="Gender"
-                        variant="outlined"
+                        variant="standard"
                         fullWidth
                         value={gender}
                         onChange={(e) => setGender(e.target.value)}
@@ -57,7 +57,7 @@ const Form = () => {
                     <TextField
                         select
                         label="Severity"
-                        variant="outlined"
+                        variant="standard"
                         fullWidth
                         value={severity}
                         onChange={(e) => setSeverity(e.target.value)}
@@ -75,14 +75,14 @@ const Form = () => {
                         onChange={handleChipInputChange}
                         renderTags={(value, getTagProps) =>
                             value.map((option, index) => (
-                                <Chip variant="outlined" label={option} {...getTagProps({ index })} />
+                                <Chip variant="standard" label={option} {...getTagProps({ index })} />
                             ))
                         }
                         renderInput={(params) => (
                             <TextField
                                 {...params}
                                 label="Dropdown"
-                                variant="outlined"
+                                variant="standard"
 
                             />
                         )}

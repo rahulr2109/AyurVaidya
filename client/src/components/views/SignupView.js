@@ -4,9 +4,10 @@ import {
   Stack,
   TextField,
   Typography,
-
+  InputLabel,
   Alert,
 } from "@mui/material";
+import Fab from '@mui/material/Fab';
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { signup } from "../../api/users";
@@ -17,6 +18,7 @@ import ErrorAlert from "../ErrorAlert";
 import { isLength, isEmail, contains } from "validator";
 import axios from "axios";
 import { Link } from "react-router-dom"
+import { grey } from "@mui/material/colors";
 
 const SignupView = () => {
   const navigate = useNavigate();
@@ -106,7 +108,7 @@ const SignupView = () => {
   };
 
   return (
-    <Container maxWidth={"xs"} sx={{ mt: { xs: 2, md: 6 }, backgroundColor: "white", padding: "10px", borderRadius: "10px" }}>
+    <Container maxWidth={"xs"} sx={{ mt: { xs: 2, md: 6 }, backgroundColor: "white", padding: "10px", borderRadius: "10px", boxShadow: "5px 20px 50px 0px rgba(0,0,0,0.5)" }}>
       <Stack alignItems="center" >
         <Typography variant="h2" color="text.secondary" sx={{ mb: 6 }}>
           <Typography
@@ -162,16 +164,20 @@ const SignupView = () => {
             error={errors.password !== undefined}
             helperText={errors.password}
           />
+          <InputLabel htmlFor="upload-photo" style={{ width: "100%", textAlign: "center", color: "white", backgroundColor: "gray", height: "42px", padding: "10px", marginTop: "1rem" }} sx={{ ":hover": { filter: 'brightness(0.6)' } }}>Upload Profile Picture</InputLabel>
           <TextField
-            name="upload-photo"
+            id="upload-photo"
+            itemID="upload-photo"
             type="file"
-            sx={{ mt: "1rem" }}
+            sx={{ mt: "1rem", color: 'black', backgroundColor: 'black', display: "none" }}
             onChange={imageUploader}
             fullWidth
-          />
-
+            label="upload Image"
+          >
+            <Button sx={{ color: "white" }} fullWidth>Hello</Button>
+          </TextField>
           <ErrorAlert error={serverError} />
-          <Button type="submit" fullWidth variant="contained" sx={{ my: 2 }} disabled={!suck}>
+          <Button type="submit" fullWidth variant="contained" sx={{ my: 2, ":hover": { filter: 'brightness(0.6)' } }} disabled={!suck}>
             Sign Up
           </Button>
         </Box>

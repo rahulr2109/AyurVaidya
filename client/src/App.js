@@ -35,8 +35,8 @@ import Home from "./components/views/Home";
 
 const ntheme = createTheme({
   palette: {
-    primary: { main: "#2e4450 " },
-    secondary: { main: "#527c88 " },
+    primary: { main: "#0AA01C " },
+    secondary: { main: "#2e4450 " },
   },
   typography: {
     fontFamily: 'monospace',

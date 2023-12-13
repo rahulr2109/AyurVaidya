@@ -102,11 +102,11 @@ const Navbar = () => {
         direction="row"
         justifyContent="space-between"
         sx={{
-          width: { lg: "75vw", md: "80vw", sm: "93vw", xs: "93vw" },
+          width: { lg: "75vw", md: "95vw", sm: "93vw", xs: "92vw" },
           height: { lg: "70px", md: "70px", sm: "50px", xs: "50px" },
           mt: "10px",
           borderRadius: "10px",
-          backgroundColor: "#3C3C3C ",
+          backgroundColor: "secondary.main",
           padding: "0px 30px 0px 30px",
 
         }}
@@ -125,7 +125,7 @@ const Navbar = () => {
             variant={navbarWidth ? "h6" : "h5"}
             mr={1}
 
-            color={"#86BB3D "}
+            color={"#0EA220 "}
           >
             {/* <Link to="/" color="inherit"> */}
             AyurVaidya
@@ -135,13 +135,13 @@ const Navbar = () => {
 
         {!navbarWidth && (
           <Box component="form" onSubmit={handleSubmit} sx={{ display: "flex", alignItems: "center" }}>
-            <Box sx={{ flexGrow: 1, maxWidth: 400, mt: "0px", border: "0.1px solid #88BA44", borderRadius: "5px", padding: "0 5px 0 5px", display: "flex", alignItems: "center" }}>
+            <Box sx={{ flexGrow: 1, maxWidth: 500, mt: "0px", borderRadius: "5px", padding: "0 5px 0 5px", display: "flex", alignItems: "center", width: "300px", height: "50px" }}>
 
-              <FaSearch style={{ color: "#86BB3D", marginBottom: "4px", marginRight: "5px", height: '20px', cursor: "pointer" }} onClick={handleSubmit} />
+              <FaSearch style={{ color: "#0EA220", marginBottom: "4px", marginRight: "5px", height: '25px', width: "25px", cursor: "pointer" }} onClick={handleSubmit} />
               <TextField
                 size="small"
                 placeholder="Search...."
-                sx={{ flexGrow: 1, maxWidth: 400, mt: "0px" }}
+                sx={{ flexGrow: 1, maxWidth: 500, mt: "0px" }}
                 onChange={handleChange}
                 value={search}
                 variant="standard"
@@ -154,22 +154,22 @@ const Navbar = () => {
 
         <HorizontalStack>
           {mobile && (
-            <IconButton sx={{ color: "#86BB3D" }} onClick={handleSearchIcon}>
+            <IconButton sx={{ color: "#0EA220" }} onClick={handleSearchIcon}>
               <AiOutlineSearch />
             </IconButton>
           )}
 
-          <IconButton sx={{ color: "#86BB3D" }} onClick={() => navigate("/")}>
+          <IconButton sx={{ color: "#0EA220" }} onClick={() => navigate("/")}>
             <AiFillHome />
           </IconButton>
           {/* home here */}
 
-          <IconButton sx={{ color: "#86BB3D" }} component={Link} to={"/question"}>
+          <IconButton sx={{ color: "#0EA220" }} component={Link} to={"/question"}>
             <FaQuestionCircle />
           </IconButton>
           {user ? (
             <>
-              <IconButton sx={{ color: "#86BB3D" }} component={Link} to={"/messenger"}>
+              <IconButton sx={{ color: "#0EA220" }} component={Link} to={"/messenger"}>
                 <AiFillMessage />
               </IconButton>
               <Box sx={{ flexGrow: 0 }}>
@@ -205,7 +205,7 @@ const Navbar = () => {
                       width: "60px",
                       "&:hover": {
                         backgroundColor: "#343435",
-                        color: "#86BB3D",
+                        color: "#0EA220",
 
                       },
                     }}>Logout</Button>
@@ -217,14 +217,14 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <Link to={"/signup"}>
-                <Button variant="text" sx={{ minWidth: 80, color: "#86BB3D" }} >
+              {/* <Link to={"/signup"}>
+                <Button variant="text" sx={{ minWidth: 80, color: "#0EA220" }} >
                   Sign Up
                 </Button>
-              </Link>
+              </Link> */}
               <Link to={"/login"}>
                 <Button variant="text" sx={{
-                  minWidth: 65, color: "#86BB3D"
+                  minWidth: 65, color: "#0EA220"
                 }} href="/login">
                   Login
                 </Button>
@@ -234,7 +234,7 @@ const Navbar = () => {
         </HorizontalStack>
       </Stack>
       {navbarWidth && searchIcon && (
-        <Box sx={{ color: "#86BB3D" }} component="form" onSubmit={handleSubmit} mt={2}>
+        <Box sx={{ color: "#0EA220" }} component="form" onSubmit={handleSubmit} mt={2}>
 
           <TextField
             size="small"

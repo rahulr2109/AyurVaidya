@@ -1,44 +1,32 @@
 import { Box, CssBaseline, Typography } from '@mui/material'
 import React from 'react'
+import { List } from '@mui/material'
+import { ListItem } from '@mui/material'
+import { ListItemButton } from '@mui/material'
+import { ListItemIcon } from '@mui/material'
+import { ListItemText } from '@mui/material'
 
 const HomeHistory = () => {
     return (
-        <Box style={{ height: "85vh", backgroundColor: "#2E4450" }}>
-            <Typography sx={{ color: "black", textAlign: "center", paddingTop: "15px", borderBottom: 0.5, height: "60px", }}>
-                Historysdasdasdasdasd
-            </Typography>
-
-            <Typography sx={{ color: "black", textAlign: "center", paddingTop: "15px", borderBottom: 0.5, height: "60px", }}>
-                Historysdasdasdasdasd
-            </Typography>
+        <Box style={{
+            height: "85vh", backgroundColor: "#F5F5DC", overflowY: "scroll", overflowX: "hidden", borderRight: 1, borderColor: "divider"
+        }}>
 
 
-            <Typography sx={{ color: "black", textAlign: "center", paddingTop: "15px", borderBottom: 0.5, height: "60px", }}>
-                Historysdasdasdasdasd
-            </Typography>
 
+            <List sx={{ backgroundColor: "#F5F5DC", height: "100vh" }} >
+                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                    <ListItem key={text} disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
 
-            <Typography sx={{ color: "black", textAlign: "center", paddingTop: "15px", borderBottom: 0.5, height: "60px", }}>
-                Historysdasdasdasdasd
-            </Typography>
-
-
-            <Typography sx={{ color: "black", textAlign: "center", paddingTop: "15px", borderBottom: 0.5, height: "60px", }}>
-                Historysdasdasdasdasd
-            </Typography>
-
-
-            <Typography sx={{ color: "black", textAlign: "center", paddingTop: "15px", borderBottom: 0.5, height: "60px", }}>
-                Historysdasdasdasdasd
-            </Typography>
-
-
-            <Typography sx={{ color: "black", textAlign: "center", paddingTop: "15px", borderBottom: 0.5, height: "60px", }}>
-                Historysdasdasdasdasd
-            </Typography>
-
-
-        </Box>
+                            </ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+            </List>
+        </Box >
     )
 }
 

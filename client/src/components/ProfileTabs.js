@@ -7,11 +7,11 @@ const ProfileTabs = (props) => {
   };
 
   return (
-    <Card sx={{ padding: 0, backgroundColor: "#527C88", }}>
+    <Card sx={{ padding: 0, backgroundColor: "#F5F5DC", }}>
       <Tabs value={props.tab} onChange={handleChange} variant="scrollable">
-        <Tab label="Posts" value="posts" />
-        <Tab label="Liked" value="liked" />
-        <Tab label="Comments" value="comments" />
+        <Tab label="Question" value="posts" />
+        <Tab label="Upvotes" value="liked" />
+        <Tab label="Answers" value="comments" />
       </Tabs>
     </Card>
   );

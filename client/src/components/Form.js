@@ -1,11 +1,23 @@
 import React, { useState } from 'react';
-import { Box, Grid, TextField, MenuItem, Autocomplete, Chip, Button } from '@mui/material';
+import { Box, Grid, TextField, MenuItem, Autocomplete, Chip, Button, emphasize } from '@mui/material';
+import { sendForm } from "../api/Data"
+import { isLoggedIn } from '../helpers/authHelper';
 
 const Form = () => {
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [age, setAge] = useState('');
     const [gender, setGender] = useState('');
     const [severity, setSeverity] = useState('');
+    const [FormData, setFormData] = useState({
+        Age: "",
+        Gender: "",
+        Severity: "",
+        SelectedOptions: []
+
+    });
+    const [ServerError, setServerError] = useState("");
+
+
 
     const dummyArray = [
         "Dummy Entry 1",
@@ -20,16 +32,27 @@ const Form = () => {
         setSelectedOptions(value);
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async (e) => {
         // Perform submit logic here
-        console.log("Age:", age);
-        console.log("Gender:", gender);
-        console.log("Severity:", severity);
-        console.log("Selected Options:", selectedOptions);
+        // console.log("Age:", age);
+        // console.log("Gender:", gender);
+        // console.log("Severity:", severity);
+
+        setFormData(
+            {
+                Age: age,
+                Gender: gender,
+                Severity: severity,
+                Symptoms: selectedOptions
+            }
+
+        );
+        const data = await sendForm(FormData, isLoggedIn());
+
     };
 
     return (
-        <Box>
+        <Box className='form' sx={{ padding: "10px" }}>
             <Grid container spacing={5} justifyContent="center" alignItems="center">
                 <Grid item xs={6}>
                     <TextField
@@ -81,7 +104,7 @@ const Form = () => {
                         renderInput={(params) => (
                             <TextField
                                 {...params}
-                                label="Dropdown"
+                                label="Symptoms"
                                 variant="standard"
 
                             />
@@ -90,8 +113,9 @@ const Form = () => {
                 </Grid>
                 <Grid item xs={12} alignSelf={"center"} >
                     <Button variant="contained" fullWidth onClick={handleSubmit} sx={{
-                        backgroundColor: "#8ABC3D", color: "#3C3C3C", ":hover": {
-                            backgroundColor: "#3C3C3C", color: "#8ABC3D"
+                        backgroundColor: "secondary.main", color: "#A3CB9A", ":hover": {
+
+                            backgroundColor: "#A3CB9A", color: "#3C3C3C"
                         }
                     }}>Submit</Button>
                 </Grid>

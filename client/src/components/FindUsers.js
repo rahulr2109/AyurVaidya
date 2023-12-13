@@ -40,7 +40,7 @@ const FindUsers = () => {
   // console.log(users);
 
   return (
-    <Card sx={{ backgroundColor: "#527C88" }}>
+    <Card sx={{ backgroundColor: "#A3CB9A" }}>
       <Stack spacing={2} sx={{ padding: "10px" }}>
         <HorizontalStack justifyContent="space-between">
           <HorizontalStack>

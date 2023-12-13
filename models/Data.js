@@ -6,15 +6,16 @@ const DataSchema = new mongoose.Schema(
             type: String,
         }
         ,
-        Treatment: {
+        Treatment: [{
             type: String,
             required: true,
-        }
+        }]
         ,
-        Remedies: {
+        Remedies: [{
             type: String,
             required: true,
         }
+        ]
 
     },
     { timestamps: true }

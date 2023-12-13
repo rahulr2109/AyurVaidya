@@ -99,7 +99,7 @@ const PostCard = (props) => {
   // console.log(post);
 
   return (
-    <Card sx={{ padding: 0, backgroundColor: "#afc2c7", }}>
+    <Card sx={{ padding: 0, backgroundColor: "#F5F5DC", }}>
       <Box className={preview}>
         <HorizontalStack spacing={0} alignItems="initial">
           <Stack

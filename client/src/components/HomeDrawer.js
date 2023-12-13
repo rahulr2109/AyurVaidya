@@ -94,18 +94,19 @@ export default function HomeDrawer() {
                     },
                     height: "30px",
 
+
                 }}
                 variant="persistent"
                 anchor="right"
                 open={open}
             >
-                <DrawerHeader>
+                <DrawerHeader sx={{ backgroundColor: "#F5F5DC" }}>
                     <IconButton onClick={handleDrawerClose}>
                         {theme.direction === 'rtl' ? <FaChevronLeft /> : < FaChevronRight />}
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
-                <List>
+                <List sx={{ backgroundColor: "#F5F5DC", height: "100vh" }} >
                     {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                         <ListItem key={text} disablePadding>
                             <ListItemButton>
@@ -118,16 +119,7 @@ export default function HomeDrawer() {
                     ))}
                 </List>
                 <Divider />
-                <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
-                            <ListItemButton>
-                                hello
-                                <ListItemText primary={text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
+
             </Drawer>
         </Box>
     );

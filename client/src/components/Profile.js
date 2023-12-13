@@ -30,7 +30,7 @@ const Profile = (props) => {
   }, [props.profile]);
 
   return (
-    <Card>
+    <Card sx={{ backgroundColor: "#F5F5DC" }}>
       {user ? (
         <Stack alignItems="center" spacing={2}>
           <Box my={1}>

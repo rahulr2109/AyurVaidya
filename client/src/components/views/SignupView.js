@@ -108,7 +108,7 @@ const SignupView = () => {
   };
 
   return (
-    <Container maxWidth={"xs"} sx={{ mt: { xs: 2, md: 6 }, backgroundColor: "white", padding: "10px", borderRadius: "10px", boxShadow: "5px 20px 50px 0px rgba(0,0,0,0.5)" }}>
+    <Container sx={{ mt: { xs: 2, md: 6 }, backgroundColor: "white", padding: "10px", borderRadius: "10px", boxShadow: "5px 20px 50px 0px rgba(0,0,0,0.5)", maxWidth: { lg: "30vw", md: "40vw", sm: "80vw", xs: "90vw" } }}>
       <Stack alignItems="center" >
         <Typography variant="h2" color="text.secondary" sx={{ mb: 6 }}>
           <Typography

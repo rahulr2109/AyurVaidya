@@ -15,7 +15,7 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import theme from "./theme";
-
+import LandingView from "./components/views/LandingView";
 import PostView from "./components/views/PostView";
 import CreatePostView from "./components/views/CreatePostView";
 import ProfileView from "./components/views/ProfileView";
@@ -31,12 +31,14 @@ import { BASE_URL } from "./config";
 import { io } from "socket.io-client";
 import { createTheme } from "@mui/material";
 import Home from "./components/views/Home";
+import ImageRecognition from "./components/views/ImageRecognition";
+import Download from "./components/views/Download";
 
 
 const ntheme = createTheme({
   palette: {
-    primary: { main: "#2e4450 " },
-    secondary: { main: "#527c88 " },
+    primary: { main: "#0AA01C " },
+    secondary: { main: "#2e4450 " },
   },
   typography: {
     fontFamily: 'monospace',
@@ -57,9 +59,22 @@ function App() {
     <ThemeProvider theme={ntheme}>
       <BrowserRouter>
         <CssBaseline />
+
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/question" element={<ExploreView />} />
+          <Route path="/" element={<LandingView />} />
+          <Route path="/imagerecogntion" element={<ImageRecognition />} />
+          <Route path="/download" element={<Download />} />
+
+          <Route path="/prediction" element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          } />
+          <Route path="/question" element={
+            <PrivateRoute>
+              <ExploreView />
+            </PrivateRoute>
+          } />
           <Route path="/posts/:id" element={<PostView />} />
           <Route
             path="/posts/create"

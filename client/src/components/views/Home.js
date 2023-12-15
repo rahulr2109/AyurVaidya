@@ -8,16 +8,50 @@ import { FaHistory } from "react-icons/fa";
 import Logo from "../../Images/logo (2).png"
 import HomeHistory from "../HomeHistory";
 import Form from "../Form";
+import { createContext } from "react";
+import { isLoggedIn } from "../../helpers/authHelper";
+import { fetchUserHistoryData } from "../../api/Data";
+import PredictionResults from "../PredictionResults";
+
+
+export const formResponseData = createContext();
 
 
 const Home = () => {
     const [width, setWindowWidth] = useState(0);
+    const [userHistoryData, setUserHistoryData] = useState([]);
+    const [treatmentsData, setTreatmentsData] = useState([]);
+    const [Loading1, setLoading1] = useState(false);
+    const [x, setx] = useState(true);
+
+    // console.log(userHistoryData);
+    console.log(treatmentsData);
+
+    React.useEffect(() => {
+
+        const fetchData = async () => {
+            try {
+
+                const data = await fetchUserHistoryData(isLoggedIn());
+                if (data?.size) {
+                    setUserHistoryData(data?.userHistory);
+                    // console.log(data?.userHistory);
+                }
+            } catch (err) {
+                console.log("Error fetching data:", err);
+            }
+        };
+
+        fetchData();
+    }, [x]);
     const mobile = width < 800;
     useEffect(() => {
         updateDimensions();
 
         window.addEventListener("resize", updateDimensions);
+        setx(x + 1);
         return () => window.removeEventListener("resize", updateDimensions);
+
     }, []);
 
     const updateDimensions = () => {
@@ -26,86 +60,104 @@ const Home = () => {
     };
 
     return (
-        <Container>
-            <Navbar />
-            <Box>
-                <Card sx={{ padding: 0 }}>
-                    <Grid
-                        container
-                        sx={{ height: "calc(100vh - 110px)" }}
-                        alignItems="stretch"
-                    >
-                        {!mobile ? (
-                            <>
+
+        <formResponseData.Provider value={{ setLoading1, setUserHistoryData, setTreatmentsData, setx, x }}>
+            <Container>
+                <Navbar />
+                <Box>
+                    <Card sx={{ padding: 0, borderRadius: "10px" }}>
+                        <Grid
+                            container
+                            sx={{ height: "calc(100vh - 110px)" }}
+                            alignItems="stretch"
+
+                        >
+                            {!mobile ? (
+                                <>
+                                    <Grid
+                                        item
+                                        xs={2.5}
+                                        sx={{
+                                            borderRight: 1,
+                                            borderColor: "divider",
+                                            height: "100%",
+
+                                        }}
+                                    >
+                                        <Box sx={{ height: "70px", borderBottom: 1, borderColor: "divider", display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "#F5F5DC ", overflowY: "scroll" }}>
+                                            <Typography
+                                                color="inherit"
+                                                edge="end"
+                                                sx={{ gap: "8px", alignItems: "center", display: "flex" }}
+                                            >
+                                                <FaHistory style={{ height: "20px", width: "20px", color: "black" }} />
+                                                <Typography sx={{ color: "black" }}>
+                                                    History
+                                                </Typography>
+                                            </Typography>
+
+                                        </Box>
+                                        <HomeHistory data={userHistoryData} />
+
+                                    </Grid>
+
+                                    <Grid item xs={9.5} sx={{ height: "100%", borderBottom: 1, borderColor: "divider", backgroundColor: "#bcd9b6 " }}>
+
+
+                                        {treatmentsData.length !== 0 ? <><PredictionResults data={treatmentsData} /></> : <> <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: "30px", flexDirection: "column", gap: "1rem", }}>
+                                            <Avatar src={Logo} alt="logo" style={{ height: "10%", width: "10%", borderRadius: "50%", aspectRatio: "3/2", border: "1px solid #168423" }} />
+                                            <Typography sx={{ fontSize: "20px", fontWeight: "bold", color: "#168423" }}>Fill the Details!</Typography>
+
+                                        </Box>
+                                            <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
+                                                <Box sx={{ height: "auto", width: "70%", mt: "2rem", borderRadius: "10px" }}>
+                                                    <Grid container sx={{ height: "100%", display: "flex", justifyContent: "center", alignItems: "center", padding: "20px", }}>
+                                                        <Form />
+                                                    </Grid>
+                                                </Box>
+                                            </Box></>}
+
+
+
+                                    </Grid>
+                                </>
+                            ) : (
                                 <Grid
                                     item
-                                    xs={3}
+                                    xs={12}
                                     sx={{
                                         borderRight: 1,
                                         borderColor: "divider",
-                                        height: "100%",
+                                        minHeight: "95vh",
+                                        backgroundColor: "#BCD9B6", color: "#3C3C3C",
+                                        height: "auto"
 
                                     }}
                                 >
-                                    <Box sx={{ height: "50px", borderBottom: 1, borderColor: "divider", display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "#3C3C3C" }}>
-                                        <Typography
-                                            color="inherit"
-                                            edge="end"
-                                            sx={{ gap: "8px", alignItems: "center", display: "flex" }}
-                                        >
-                                            <FaHistory style={{ height: "20px", width: "20px", color: "#7A9A41" }} />
-                                            <Typography sx={{ color: "#86BB3D" }}>
-                                                History
-                                            </Typography>
-                                        </Typography>
+                                    <Box sx={{ height: "auto", background: "#F5F5DC" }}>
+                                        <HomeDrawer data={userHistoryData} />
 
                                     </Box>
-                                    <HomeHistory />
-
-                                </Grid>
-
-                                <Grid item xs={9} sx={{ height: "100%", borderBottom: 1, borderColor: "divider", }}>
-                                    <Box sx={{ height: "50px", borderBottom: 1, borderColor: "divider", backgroundColor: "#2E4450" }} />
 
 
-                                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: "30px", flexDirection: "column", gap: "1rem", }}>
-                                        <Avatar src={Logo} alt="logo" style={{ height: "10%", width: "10%", borderRadius: "50%", aspectRatio: "3/2", border: "1px solid #8EBE3D" }} />
-                                        <Typography sx={{ fontSize: "20px", fontWeight: "bold", color: "#8EBE3D" }}>Please select your symptoms!</Typography>
+                                    {treatmentsData.length !== 0 ? <><PredictionResults data={treatmentsData} /></> : <> <Typography sx={{ color: "#168423", textAlign: "center", fontSize: "20px", fontWeight: "bold", mt: "20px" }}>Please select your symptoms!</Typography>
 
-                                    </Box>
-                                    <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
-                                        <Box sx={{ height: "auto", border: "1px solid black", width: "60%", mt: "2rem", borderRadius: "10px" }}>
-                                            <Grid container sx={{ height: "100%", display: "flex", justifyContent: "center", alignItems: "center", padding: "20px", }}>
-                                                <Form />
-                                            </Grid>
+
+                                        <Box sx={{ height: "auto", padding: "20px", mt: "20px", display: "flex", alignItems: "center" }}>     <Form />
                                         </Box>
-                                    </Box>
+
+                                    </>}
 
 
 
                                 </Grid>
-                            </>
-                        ) : (
-                            <Grid
-                                item
-                                xs={12}
-                                sx={{
-                                    borderRight: 1,
-                                    borderColor: "divider",
-                                    height: "100%",
-
-                                }}
-                            >
-                                <Box sx={{ height: "auto", background: "#3C3C3C" }}> <HomeDrawer /></Box>
-
-
-                            </Grid>
-                        )
-                        }
-                    </Grid>
-                </Card>
-            </Box>
-        </Container >
+                            )
+                            }
+                        </Grid>
+                    </Card>
+                </Box>
+            </Container >
+        </formResponseData.Provider>
     );
 };
 

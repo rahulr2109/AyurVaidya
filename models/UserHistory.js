@@ -9,17 +9,27 @@ const UserHistory = new mongoose.Schema(
         }
         ,
         symptoms: [
-
             {
                 type: String,
                 required: true,
 
             }
-        ]
-        ,
-        Data: {
+        ],
+        severity: {
+            type: String,
+            required: true,
+        },
+        age: {
+            type: Number,
+            required: true,
+        },
+        gender: {
+            type: String,
+            required: true,
+        },
+        userData: {
             type: mongoose.Types.ObjectId,
-            ref: "Data",
+            ref: "diseasSchema",
             required: true,
         }
     },

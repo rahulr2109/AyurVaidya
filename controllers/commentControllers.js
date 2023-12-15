@@ -14,18 +14,6 @@ const createComment = async (req, res) => {
     if (!post) {
       throw new Error("Post not found");
     }
-
-    // if (cooldown.has(userId)) {
-    //   throw new Error(
-    //     "You are commenting too frequently. Please try again shortly."
-    //   );
-    // }
-
-    // cooldown.add(userId);
-    // setTimeout(() => {
-    //   cooldown.delete(userId);
-    // }, 30000);
-
     const comment = await Comment.create({
       content,
       parent: parentId,
@@ -98,7 +86,7 @@ const getUserComments = async (req, res) => {
 
 const updateComment = async (req, res) => {
   try {
-    const commentId = req.params.id;
+    const commentId = req.query;
     const { userId, content, isAdmin } = req.body;
 
     if (!content) {

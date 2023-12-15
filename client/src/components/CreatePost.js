@@ -19,16 +19,16 @@ const CreatePost = () => {
           fontWeight: "bold",
           fontSize: "1rem",
           padding: "0.5rem",
-          backgroundColor: "primary.main",
-
+          backgroundColor: "#F5F5DC",
+          color: "primary.main",
           height: "100%",
 
           "&:hover": {
+
             backgroundColor: "primary.main",
-
-
+            color: "#F5F5DC",
           },
-          color: "#7CAF49",
+
         }}
       >
         <AiOutlinePlus />

@@ -38,7 +38,7 @@ const TopPosts = () => {
 
   return (
     <Stack spacing={2} >
-      <Card sx={{ padding: "13px", backgroundColor: "#2E4450", color: "#86BB3D" }}>
+      <Card sx={{ padding: "13px", backgroundColor: "#F5F5DC", color: "#1E931A" }}>
         <HorizontalStack >
           <MdLeaderboard />
           <Typography >Top questions</Typography>

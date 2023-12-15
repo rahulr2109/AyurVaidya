@@ -9,6 +9,7 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
+import Moment from 'react-moment';
 
 
 import ListItem from '@mui/material/ListItem';
@@ -20,6 +21,9 @@ import { FiMenu } from "react-icons/fi";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { FaHistory } from "react-icons/fa";
+import { Stack } from '@mui/material';
+import { useContext } from 'react';
+import { formResponseData } from './views/Home';
 
 const drawerWidth = 240;
 
@@ -55,9 +59,10 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-start',
 }));
 
-export default function HomeDrawer() {
+export default function HomeDrawer({ data }) {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+    // const { setLoading1, setUserHistoryData, setTreatmentsData, setx } = useContext(formResponseData);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -66,6 +71,9 @@ export default function HomeDrawer() {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+    // console.log(data);
+
+
 
     return (
         <Box sx={{ display: 'flex', justifyContent: "center", alignItems: "center" }}>
@@ -78,7 +86,7 @@ export default function HomeDrawer() {
                     aria-label="open drawer"
                     edge="end"
                     onClick={handleDrawerOpen}
-                    sx={{ ...(open && { display: 'none' }), display: { lg: "none", md: "none", ms: "flex", xs: "flex", gap: "8px", alignItems: "center" } }}
+                    sx={{ ...(open && { display: 'none' }), display: { lg: "none", md: "none", ms: "flex", xs: "flex", gap: "8px", alignItems: "center" }, ml: "20px" }}
                 >
                     <FaHistory style={{ height: "20px", width: "20px", color: "#7A9A41" }} /> <Typography sx={{ color: "#86BB3D" }}>History</Typography>
                 </IconButton>
@@ -94,40 +102,33 @@ export default function HomeDrawer() {
                     },
                     height: "30px",
 
+
                 }}
                 variant="persistent"
                 anchor="right"
                 open={open}
             >
-                <DrawerHeader>
+                <DrawerHeader sx={{ backgroundColor: "#F5F5DC" }}>
                     <IconButton onClick={handleDrawerClose}>
                         {theme.direction === 'rtl' ? <FaChevronLeft /> : < FaChevronRight />}
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
-                <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
+                <List sx={{ backgroundColor: "#F5F5DC", height: "100vh", justifyContent: "center", display: data.length ? "" : "flex", alignItems: "center" }} >
+                    {data.length === 0 && <Typography sx={{ color: "black", fontSize: "20px", }}>No History</Typography>}
+                    {data.map((newdata, index) => (
+                        <ListItem key={index} disablePadding sx={{ borderBottom: 1, borderColor: "divider" }}>
                             <ListItemButton>
-                                <ListItemIcon>
-                                    hello
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
+                                <Stack>
+                                    <ListItemText sx={{ color: "primary.main" }} primary={newdata?.userData?.modern_name} />
+                                    <Typography sx={{ color: "black", fontSize: "12px", }}> <Moment fromNow>{newdata.createdAt}</Moment></Typography>
+                                </Stack>
                             </ListItemButton>
                         </ListItem>
                     ))}
                 </List>
                 <Divider />
-                <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
-                            <ListItemButton>
-                                hello
-                                <ListItemText primary={text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
+
             </Drawer>
         </Box>
     );

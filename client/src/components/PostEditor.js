@@ -37,6 +37,8 @@ const PostEditor = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // console.log(formData, isLoggedIn());
+
     setLoading(true);
     const data = await createPost(formData, isLoggedIn());
     setLoading(false);
@@ -54,8 +56,8 @@ const PostEditor = () => {
   };
 
   return (
-    <Card sx={{ padding: "15px", }}>
-      <Stack spacing={1}>
+    <Card sx={{ padding: "15px", backgroundColor: "#F5F5DC" }}>
+      <Stack spacing={1} >
         {user && (
           <HorizontalStack spacing={2}>
             <UserAvatar width={50} height={50} username={user.username} userProfile={user.profile} />
@@ -66,7 +68,7 @@ const PostEditor = () => {
         )}
 
 
-        <Box component="form" onSubmit={handleSubmit} sx={{ backgroundColor: "#AFC2C7" }}>
+        <Box component="form" onSubmit={handleSubmit} >
           <TextField
             fullWidth
             label="Title"

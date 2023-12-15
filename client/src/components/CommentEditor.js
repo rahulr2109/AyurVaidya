@@ -49,9 +49,9 @@ const CommentEditor = ({ label, comment, addComment, setReplying }) => {
 
   return (
     <Card>
-      <Stack spacing={2} sx={{ padding: "10px", backgroundColor: "#343435" }}>
+      <Stack spacing={2} sx={{ padding: "10px", backgroundColor: "secondary.main" }}>
         <HorizontalStack justifyContent="space-between">
-          <Typography variant="h5" sx={{ color: "#AFC2C7" }}>
+          <Typography variant="h5" sx={{ color: "#04A017" }}>
             {comment ? <>Reply</> : <>Comment</>}
           </Typography>
 
@@ -61,12 +61,12 @@ const CommentEditor = ({ label, comment, addComment, setReplying }) => {
           <TextField
             multiline
             fullWidth
-            label={label}
+
             rows={5}
             required
             name="content"
             sx={{
-              backgroundColor: "white",
+              backgroundColor: "#F5F5DC",
             }}
             onChange={handleChange}
             onFocus={handleFocus}
@@ -80,12 +80,12 @@ const CommentEditor = ({ label, comment, addComment, setReplying }) => {
             fullWidth
             disabled={loading}
             sx={{
-              backgroundColor: "#AFC2C7",
+              backgroundColor: "#0EA220",
               mt: 2,
               color: "#343435",
               "&:hover": {
                 backgroundColor: "#343435",
-                color: "#AFC2C7",
+                color: "#0EA220",
               },
             }}
           >

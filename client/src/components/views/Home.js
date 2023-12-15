@@ -23,9 +23,10 @@ const Home = () => {
     const [treatmentsData, setTreatmentsData] = useState([]);
     const [Loading1, setLoading1] = useState(false);
     const [x, setx] = useState(true);
+    const [disease, setDiSease] = useState("");
 
     // console.log(userHistoryData);
-    console.log(treatmentsData);
+    // console.log(treatmentsData);
 
     React.useEffect(() => {
 
@@ -61,7 +62,7 @@ const Home = () => {
 
     return (
 
-        <formResponseData.Provider value={{ setLoading1, setUserHistoryData, setTreatmentsData, setx, x }}>
+        <formResponseData.Provider value={{ setLoading1, setUserHistoryData, setTreatmentsData, setx, x, setDiSease }}>
             <Container>
                 <Navbar />
                 <Box>
@@ -90,6 +91,7 @@ const Home = () => {
                                                 edge="end"
                                                 sx={{ gap: "8px", alignItems: "center", display: "flex" }}
                                             >
+
                                                 <FaHistory style={{ height: "20px", width: "20px", color: "black" }} />
                                                 <Typography sx={{ color: "black" }}>
                                                     History
@@ -104,7 +106,7 @@ const Home = () => {
                                     <Grid item xs={9.5} sx={{ height: "100%", borderBottom: 1, borderColor: "divider", backgroundColor: "#bcd9b6 " }}>
 
 
-                                        {treatmentsData.length !== 0 ? <><PredictionResults data={treatmentsData} /></> : <> <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: "30px", flexDirection: "column", gap: "1rem", }}>
+                                        {((treatmentsData.length) || (disease.length)) !== 0 ? <><PredictionResults data={disease} /></> : <> <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: "30px", flexDirection: "column", gap: "1rem", }}>
                                             <Avatar src={Logo} alt="logo" style={{ height: "10%", width: "10%", borderRadius: "50%", aspectRatio: "3/2", border: "1px solid #168423" }} />
                                             <Typography sx={{ fontSize: "20px", fontWeight: "bold", color: "#168423" }}>Fill the Details!</Typography>
 
@@ -130,7 +132,8 @@ const Home = () => {
                                         borderColor: "divider",
                                         minHeight: "95vh",
                                         backgroundColor: "#BCD9B6", color: "#3C3C3C",
-                                        height: "auto"
+                                        height: "auto",
+                                        overflowY: "scroll"
 
                                     }}
                                 >
@@ -140,16 +143,13 @@ const Home = () => {
                                     </Box>
 
 
-                                    {treatmentsData.length !== 0 ? <><PredictionResults data={treatmentsData} /></> : <> <Typography sx={{ color: "#168423", textAlign: "center", fontSize: "20px", fontWeight: "bold", mt: "20px" }}>Please select your symptoms!</Typography>
+                                    {(treatmentsData.length) || (disease) !== 0 ? <><PredictionResults data={disease} /></> : <> <Typography sx={{ color: "#168423", textAlign: "center", fontSize: "20px", fontWeight: "bold", mt: "20px" }}>Please select your symptoms!</Typography>
 
 
                                         <Box sx={{ height: "auto", padding: "20px", mt: "20px", display: "flex", alignItems: "center" }}>     <Form />
                                         </Box>
 
                                     </>}
-
-
-
                                 </Grid>
                             )
                             }

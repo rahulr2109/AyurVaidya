@@ -24,9 +24,10 @@ const Card = ({ data }) => {
 
 
 const PredictionResults = ({ data }) => {
-    const { setLoading1, setUserHistoryData, setTreatmentsData, setx } = useContext(formResponseData);
+    const { setLoading1, setUserHistoryData, setTreatmentsData, setx, setDisease } = useContext(formResponseData);
     const deleteTreament = () => {
         setTreatmentsData([]);
+        setDisease("")
         setx((x) => !x)
     }
     // console.log(data);

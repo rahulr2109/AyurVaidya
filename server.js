@@ -13,7 +13,6 @@ const PostLike = require("./models/PostLike");
 const Post = require("./models/Post");
 const data = require("./routes/data");
 
-
 dotenv.config();
 
 const httpServer = require("http").createServer(app);
@@ -21,7 +20,6 @@ const io = require("socket.io")(httpServer, {
   cors: {
     origin: ["http://localhost:3000"],
     creadentials: true,
-
   },
 });
 

@@ -6,7 +6,7 @@ import {
   TextField,
   Typography,
   Button,
-  InputAdornment,
+
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
@@ -30,6 +30,8 @@ import { Menu } from "@mui/material";
 import { MenuItem } from "@mui/material";
 import { FaSearch } from "react-icons/fa";
 import { FaQuestionCircle } from "react-icons/fa";
+import { MdOutlineBatchPrediction } from "react-icons/md";
+import { RiVoiceRecognitionLine } from "react-icons/ri";
 
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -153,25 +155,39 @@ const Navbar = () => {
         )}
 
         <HorizontalStack>
-          {mobile && (
-            <IconButton sx={{ color: "#0EA220" }} onClick={handleSearchIcon}>
-              <AiOutlineSearch />
-            </IconButton>
-          )}
 
-          <IconButton sx={{ color: "#0EA220" }} onClick={() => navigate("/")}>
-            <AiFillHome />
-          </IconButton>
+
+
           {/* home here */}
 
-          <IconButton sx={{ color: "#0EA220" }} component={Link} to={"/question"}>
-            <FaQuestionCircle />
-          </IconButton>
+
           {user ? (
+
+
+            // { mobile && (
+            //   <>
+            //     <IconButton sx={{ color: "#0EA220" }} onClick={handleSearchIcon}>
+            //       <AiOutlineSearch />
+            //     </IconButton>
+            //   </>
+            // )}
+
+
             <>
-              <IconButton sx={{ color: "#0EA220" }} component={Link} to={"/messenger"}>
-                <AiFillMessage />
+              <IconButton sx={{ color: "#0EA220" }} onClick={() => navigate("/")}>
+                <  AiFillHome />
               </IconButton>
+              <IconButton sx={{ color: "#0EA220" }} component={Link} to={"/question"}>
+                <FaQuestionCircle />
+              </IconButton>
+              <IconButton sx={{ color: "#0EA220" }} onClick={() => navigate("/prediction")}>
+                < MdOutlineBatchPrediction />
+              </IconButton>
+              <IconButton sx={{ color: "#0EA220" }} component={Link} to={"/imagerecogntion"}>
+                < RiVoiceRecognitionLine />
+              </IconButton>
+
+
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -198,6 +214,8 @@ const Navbar = () => {
 
                     <Link to={"/users/" + username} style={{ textDecoration: "none", color: "black" }}> Profile</Link>
                   </MenuItem>
+
+
                   <MenuItem onClick={handleCloseUserMenu}>
 
                     <Button onClick={handleLogout} variant="contained" sx={{
@@ -212,16 +230,17 @@ const Navbar = () => {
                   </MenuItem>
 
                 </Menu>
+
               </Box>
 
             </>
           ) : (
             <>
-              {/* <Link to={"/signup"}>
+              <Link to={"/signup"}>
                 <Button variant="text" sx={{ minWidth: 80, color: "#0EA220" }} >
                   Sign Up
                 </Button>
-              </Link> */}
+              </Link>
               <Link to={"/login"}>
                 <Button variant="text" sx={{
                   minWidth: 65, color: "#0EA220"

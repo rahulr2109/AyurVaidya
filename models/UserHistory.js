@@ -27,9 +27,9 @@ const UserHistory = new mongoose.Schema(
             type: String,
             required: true,
         },
-        Data: {
+        userData: {
             type: mongoose.Types.ObjectId,
-            ref: "Data",
+            ref: "diseasSchema",
             required: true,
         }
     },

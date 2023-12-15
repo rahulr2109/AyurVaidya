@@ -2,12 +2,23 @@ import React, { useState } from 'react';
 import { Box, Grid, TextField, MenuItem, Autocomplete, Chip, Button, emphasize } from '@mui/material';
 import { sendForm } from "../api/Data"
 import { isLoggedIn } from '../helpers/authHelper';
+import { useContext } from 'react';
+import { formResponseData } from './views/Home';
+import { symptoms_list } from './contstants/constant';
+import { sendFormServer } from '../api/Data';
+import { Container } from '@mui/material';
+
+
 
 const Form = () => {
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [age, setAge] = useState('');
     const [gender, setGender] = useState('');
     const [severity, setSeverity] = useState('');
+    const [Dieseas, setDieases] = useState("");
+    const { setLoading1, setUserHistoryData, setTreatmentsData, setx, x } = useContext(formResponseData);
+
+
     const [FormData, setFormData] = useState({
         Age: "",
         Gender: "",
@@ -18,41 +29,43 @@ const Form = () => {
     const [ServerError, setServerError] = useState("");
 
 
-
-    const dummyArray = [
-        "Dummy Entry 1",
-        "Dummy Entry 2",
-        "Dummy Entry 3",
-        // ... rest of the dummy entries
-        "Dummy Entry 49",
-        "Dummy Entry 50"
-    ];
-
     const handleChipInputChange = (event, value) => {
         setSelectedOptions(value);
     };
 
-    const handleSubmit = async (e) => {
-        // Perform submit logic here
-        // console.log("Age:", age);
-        // console.log("Gender:", gender);
-        // console.log("Severity:", severity);
-
+    React.useEffect(() => {
         setFormData(
             {
+
                 Age: age,
                 Gender: gender,
                 Severity: severity,
                 Symptoms: selectedOptions
             }
-
         );
-        const data = await sendForm(FormData, isLoggedIn());
+    }, [selectedOptions, age, gender, severity]);
 
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const newData = await sendFormServer(FormData, isLoggedIn());
+
+            if (newData.success === "true") {
+                setTreatmentsData(newData.TreatRem);
+                setx((x) => !x)
+                // console.log(newData)
+
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
     };
 
     return (
-        <Box className='form' sx={{ padding: "10px" }}>
+        <Container className='form' sx={{ padding: "10px", boxShadow: "10px 10px 10px 10px rgba(0, 0, 0, 0.1)" }}>
             <Grid container spacing={5} justifyContent="center" alignItems="center">
                 <Grid item xs={6}>
                     <TextField
@@ -93,7 +106,7 @@ const Form = () => {
                 <Grid item xs={12}>
                     <Autocomplete
                         multiple
-                        options={dummyArray}
+                        options={symptoms_list}
                         value={selectedOptions}
                         onChange={handleChipInputChange}
                         renderTags={(value, getTagProps) =>
@@ -120,7 +133,7 @@ const Form = () => {
                     }}>Submit</Button>
                 </Grid>
             </Grid>
-        </Box>
+        </Container>
     );
 };
 

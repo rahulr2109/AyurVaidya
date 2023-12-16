@@ -24,6 +24,7 @@ import { FaHistory } from "react-icons/fa";
 import { Stack } from '@mui/material';
 import { useContext } from 'react';
 import { formResponseData } from './views/Home';
+import ResultModel from './ResultModel';
 
 const drawerWidth = 240;
 
@@ -118,12 +119,7 @@ export default function HomeDrawer({ data }) {
                     {data.length === 0 && <Typography sx={{ color: "black", fontSize: "20px", }}>No History</Typography>}
                     {data.map((newdata, index) => (
                         <ListItem key={index} disablePadding sx={{ borderBottom: 1, borderColor: "divider" }}>
-                            <ListItemButton>
-                                <Stack>
-                                    <ListItemText sx={{ color: "primary.main" }} primary={newdata?.userData?.modern_name} />
-                                    <Typography sx={{ color: "black", fontSize: "12px", }}> <Moment fromNow>{newdata.createdAt}</Moment></Typography>
-                                </Stack>
-                            </ListItemButton>
+                            <ResultModel finalData={newdata?.userData} isDarawer={true} text={newdata?.userData?.modern_name} mom={newdata.createdAt} />
                         </ListItem>
                     ))}
                 </List>

@@ -9,10 +9,6 @@ import { FaUpload } from "react-icons/fa";
 import { imageRecognition } from '../../api/Data'
 import { Avatar } from '@mui/material'
 import Loading from '../Loading'
-import { set } from 'mongoose'
-
-
-
 
 
 const ImageRecognition = () => {
@@ -37,6 +33,7 @@ const ImageRecognition = () => {
                 formdata
             );
             setSuck(2);
+            setLoad(false)
             if (response.data.secure_url) {
                 setImage(response.data.secure_url);
 
@@ -50,7 +47,7 @@ const ImageRecognition = () => {
         e.preventDefault();
         setLoad(true);
         const image_link = Image;
-        console.log(image_link);
+        // console.log(image_link);
         const data = await imageRecognition(image_link);
 
         if (data) {
@@ -116,7 +113,7 @@ const ImageRecognition = () => {
                         >
                             <Button sx={{ color: "white", width: "30%", height: "30%" }} >Hello</Button>
                         </TextField>
-                        <Button type='submit' variant={"contained"} sx={{ width: "30%", height: "42px", ":hover": { filter: 'brightness(0.6)' }, mt: "1rem", ml: "6px" }} onLoad={!suck}>Recognize</Button>
+                        <Button type='submit' variant={"contained"} sx={{ width: "30%", height: "42px", ":hover": { filter: 'brightness(0.6)' }, mt: "1rem", ml: "6px" }} disabled={Load}>Recognize</Button>
 
 
                     </Stack>

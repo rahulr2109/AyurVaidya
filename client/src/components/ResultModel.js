@@ -15,6 +15,10 @@ import { formResponseData } from './views/Home';
 import { set } from 'mongoose';
 import { Box } from '@mui/system';
 import { Stack } from '@mui/material';
+import { ListItemText } from '@mui/material';
+import Moment from 'react-moment';
+import { ListItemButton } from '@mui/material';
+
 
 
 
@@ -56,7 +60,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     },
 }));
 
-export default function ResultModel({ finalData, raw, name }) {
+export default function ResultModel({ finalData, raw, name, isDarawer, text, mom }) {
     const [open, setOpen] = React.useState(false);
     const { setLoading1, setUserHistoryData, setTreatmentsData, setx, x, disease, setDisease, setFormDataModel, FormDataModel } = useContext(formResponseData);
 
@@ -96,14 +100,20 @@ export default function ResultModel({ finalData, raw, name }) {
 
     return (
         <React.Fragment>
-            <Button
-                variant="contained"
-                color="success"
-                sx={{ position: "absolute", bottom: "5px", right: "5px" }}
-                onClick={handleClickOpen}
-            >
-                get Cure {">"}
-            </Button>
+
+            {
+                isDarawer ? <><ListItemButton onClick={handleClickOpen}><Stack > <ListItemText sx={{ color: "primary.main" }} primary={text} />
+                    <Typography sx={{ color: "black", fontSize: "12px", }}> <Moment fromNow>{mom}</Moment></Typography></Stack></ListItemButton></> : <>    <Button
+                        variant="contained"
+                        color="success"
+                        sx={{ position: "absolute", bottom: "5px", right: "5px" }}
+                        onClick={handleClickOpen}
+                    >
+                        get Cure {">"}
+                    </Button></>
+            }
+
+
             <BootstrapDialog
                 onClose={handleClose}
                 aria-labelledby="customized-dialog-title"

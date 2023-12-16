@@ -54,7 +54,7 @@ const Card = ({ name, chance, data1 }) => {
         // flexWrap: "wrap",
         // justifyContent: "center",
         alignItems: "center",
-        width: { xs: "80%", md: "95%" },
+        width: { xs: "85%", md: "95%" },
         height: "150px",
         backgroundColor: "#f5f5dc",
         fontFamily: "monospace",

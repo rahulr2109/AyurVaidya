@@ -21,9 +21,19 @@ const Home = () => {
   const [treatmentsData, setTreatmentsData] = useState([]);
   const [Loading1, setLoading1] = useState(false);
   const [x, setx] = useState(true);
-
+  const [disease, setDisease] = useState({
+    Disease: [],
+    Probability: []
+  });
+  const [FormDataModel, setFormDataModel] = useState({
+    Age: "",
+    Gender: "",
+    Severity: "",
+    SelectedOptions: []
+  });
   // console.log(userHistoryData);
-  console.log(treatmentsData);
+  // console.log(treatmentsData);
+  // console.log(disease)
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -37,9 +47,9 @@ const Home = () => {
         console.log("Error fetching data:", err);
       }
     };
-
     fetchData();
   }, [x]);
+  // console.log(disease)
   const mobile = width < 800;
   useEffect(() => {
     updateDimensions();
@@ -56,7 +66,7 @@ const Home = () => {
 
   return (
     <formResponseData.Provider
-      value={{ setLoading1, setUserHistoryData, setTreatmentsData, setx, x }}
+      value={{ setLoading1, setUserHistoryData, setTreatmentsData, setx, x, disease, setDisease, setFormDataModel, FormDataModel }}
     >
       <Container>
         <Navbar />
@@ -122,9 +132,9 @@ const Home = () => {
                       backgroundColor: "#bcd9b6 ",
                     }}
                   >
-                    {treatmentsData.length !== 0 ? (
+                    {disease?.Disease.length !== 0 ? (
                       <>
-                        <PredictionResults data={treatmentsData} />
+                        <PredictionResults data={disease} />
                       </>
                     ) : (
                       <>
@@ -210,9 +220,9 @@ const Home = () => {
                     <HomeDrawer data={userHistoryData} />
                   </Box>
 
-                  {treatmentsData.length !== 0 ? (
+                  {disease.Disease.length !== 0 ? (
                     <>
-                      <PredictionResults data={treatmentsData} />
+                      <PredictionResults data={disease} />
                     </>
                   ) : (
                     <>

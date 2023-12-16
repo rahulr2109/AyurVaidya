@@ -10,13 +10,14 @@ import { Container } from '@mui/material';
 
 
 
+
 const Form = () => {
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [age, setAge] = useState('');
     const [gender, setGender] = useState('');
     const [severity, setSeverity] = useState('');
-    const [Dieseas, setDieases] = useState("");
-    const { setLoading1, setUserHistoryData, setTreatmentsData, setx, x, setDiSease } = useContext(formResponseData);
+    // const [Dieseas, setDieases] = useState("");
+    const { setLoading1, setUserHistoryData, setTreatmentsData, setx, x, disease, setDisease, setFormDataModel, FormDataModel } = useContext(formResponseData);
 
 
     const [FormData, setFormData] = useState({
@@ -24,7 +25,6 @@ const Form = () => {
         Gender: "",
         Severity: "",
         SelectedOptions: []
-
     });
     const [ServerError, setServerError] = useState("");
 
@@ -36,13 +36,13 @@ const Form = () => {
     React.useEffect(() => {
         setFormData(
             {
-
                 Age: age,
                 Gender: gender,
                 Severity: severity,
                 Symptoms: selectedOptions
             }
         );
+
     }, [selectedOptions, age, gender, severity]);
 
 
@@ -53,10 +53,12 @@ const Form = () => {
             const newData = await sendForm(FormData);
             // console.log(FormData)
             if (newData) {
-                // setTreatmentsData(newData.TreatRem);
-                setDiSease(newData.Diesease)
-                console.log(newData)
-
+                // setTreatmentsData(newData);
+                setDisease(newData)
+                // console.log(newData)
+                // console.log(disease)
+                // console.log(newData)
+                setFormDataModel(FormData)
                 setx((x) => !x)
                 // console.log(newData)
 

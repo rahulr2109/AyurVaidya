@@ -46,6 +46,11 @@ const ntheme = createTheme({
     fontWeightRegular: 500,
     fontWeightMedium: 800,
   },
+  avatar: {
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center center',
+  },
 });
 
 

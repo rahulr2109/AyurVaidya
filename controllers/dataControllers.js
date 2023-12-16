@@ -7,14 +7,16 @@ const diseaseSchema = require("../models/NewData")
 
 const UserHistory = require("../models/UserHistory");
 
+
 const createPrediction = async (req, res) => {
     try {
-        const { Age, Gender, Severity, Symptoms, userId } = req.body;
+        const { Age, Disease, Gender, Severity, Symptoms, userId } = req.body;
 
         // console.log(userId, Age);
-        const Disease = "Bronchial Asthma";
+        // const Disease = "Bronchial Asthma";
         //just for testing , we'll will have a the disease predicted by model and then well send it from the client side to the server.
-
+        // console.log(Age, Disease, Gender, Severity, Symptoms, userId)
+        // const age = parseInt(Age);
         if (!(Age && Gender && Symptoms)) {
             throw new Error("Inputs Required");
         }
@@ -33,8 +35,6 @@ const createPrediction = async (req, res) => {
         )
 
         return res.status(200).json({ success: "true", TreatRem: TreatRem[0] });
-
-
     } catch (err) {
         return res.status(400).json({ error: err.message });
     }
@@ -44,10 +44,10 @@ const createPrediction = async (req, res) => {
 
 const feedData = async (req, res) => {
     try {
-        const data = req.body.diseases;
+        const data = req.body.disease || req.body.diseases;
 
         const savedDiseases = await diseaseSchema.insertMany(data);
-        return res.status(201).json(savedDiseases);
+        return res.status(201).json(savedDiseases.length);
 
     } catch (err) {
         return res.status(400).json({ error: err.message });
@@ -67,8 +67,30 @@ const userHistory = async (req, res) => {
     }
 };
 
+const getFormRes = async (req, res) => {
+    try {
+        const { Age, Disease, Gender, Severity, Symptoms, userId } = req.body;
+
+        // console.log(userId, Age);
+        // const Disease = "Bronchial Asthma";
+        //just for testing , we'll will have a the disease predicted by model and then well send it from the client side to the server.
+        // console.log(Age, Disease, Gender, Severity, Symptoms, userId)
+        // const age = parseInt(Age);
+        if (!(Age && Gender && Symptoms)) {
+            throw new Error("Inputs Required");
+        }
+
+        const TreatRem = await diseaseSchema.find({ modern_name: Disease }).lean();
+        // console.log(TreatRem[0]);
 
 
-module.exports = { createPrediction, feedData, userHistory }
+        return res.status(200).json({ success: "true", TreatRem: TreatRem[0] });
+    } catch (err) {
+        return res.status(400).json({ error: err.message });
+    }
+}
+
+
+module.exports = { createPrediction, feedData, userHistory, getFormRes }
 
 

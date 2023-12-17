@@ -33,8 +33,8 @@ import { createTheme } from "@mui/material";
 import Home from "./components/views/Home";
 import ImageRecognition from "./components/views/ImageRecognition";
 import Download from "./components/views/Download";
-import Quiz from "./components/views/Quiz";
-
+import Quiz from "./components/views/QuizMain";
+import QuizMain from "./components/views/QuizMain";
 
 const ntheme = createTheme({
   palette: {
@@ -42,21 +42,17 @@ const ntheme = createTheme({
     secondary: { main: "#2e4450 " },
   },
   typography: {
-    fontFamily: 'monospace',
+    fontFamily: "monospace",
     fontWeightLight: 400,
     fontWeightRegular: 500,
     fontWeightMedium: 800,
   },
   avatar: {
-    backgroundSize: 'contain',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center center',
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center center",
   },
 });
-
-
-
-
 
 function App() {
   initiateSocketConnection();
@@ -67,21 +63,27 @@ function App() {
         <CssBaseline />
 
         <Routes>
-          <Route path="/dosha" element={<Quiz />} />
+          <Route path="/dosha" element={<QuizMain />} />
           <Route path="/" element={<LandingView />} />
           <Route path="/imagerecogntion" element={<ImageRecognition />} />
           <Route path="/download" element={<Download />} />
 
-          <Route path="/prediction" element={
-            <PrivateRoute>
-              <Home />
-            </PrivateRoute>
-          } />
-          <Route path="/question" element={
-            <PrivateRoute>
-              <ExploreView />
-            </PrivateRoute>
-          } />
+          <Route
+            path="/prediction"
+            element={
+              <PrivateRoute>
+                <Home />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/question"
+            element={
+              <PrivateRoute>
+                <ExploreView />
+              </PrivateRoute>
+            }
+          />
           <Route path="/posts/:id" element={<PostView />} />
           <Route
             path="/posts/create"

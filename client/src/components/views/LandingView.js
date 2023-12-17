@@ -9,7 +9,8 @@ import bg from "../../Images/newbg.png";
 import homelogo from "../../Images/home.jpeg";
 import { Container, Typography, Button } from "@mui/material";
 import { isLoggedIn } from "../../helpers/authHelper";
-import Quiz from "../Quiz";
+import Quiz from "./Quiz";
+import { Link } from "react-router-dom";
 
 
 const img =
@@ -27,7 +28,7 @@ const LandingView = () => {
                         height: "auto",
                         borderRadius: "10px",
                         minHeight: "85vh",
-                        border: 1,
+                        // border: 1,
                     }}
                 >
                     <Box
@@ -40,7 +41,7 @@ const LandingView = () => {
                             alignItems: "center",
                             flexDirection: "column",
                             // backgroundColor: "#BCD9B6",
-                            minHeight: { lg: "60vh", md: "60vh", sm: "50vh", xs: "50vh" },
+                            minHeight: { lg: "70vh", md: "60vh", sm: "55vh", xs: "55vh" },
                             backgroundSize: "cover",
                             backgroundOrigin: "content-box",
                             backgroundPosition: "center",
@@ -73,10 +74,10 @@ const LandingView = () => {
                             className="content"
                             sx={{
                                 fontSize: {
-                                    lg: "40px",
-                                    md: "30px",
-                                    sm: "25px",
-                                    xs: "25px",
+                                    lg: "45px",
+                                    md: "35px",
+                                    sm: "30px",
+                                    xs: "30px",
                                     textAlign: "center",
                                     width: "100%",
                                 },
@@ -88,10 +89,10 @@ const LandingView = () => {
                             className="content"
                             sx={{
                                 fontSize: {
-                                    lg: "40px",
-                                    md: "30px",
-                                    sm: "25px",
-                                    xs: "25px",
+                                    lg: "45px",
+                                    md: "35px",
+                                    sm: "35px",
+                                    xs: "35px",
                                     textAlign: "center",
                                     width: "50%",
                                 },
@@ -99,7 +100,7 @@ const LandingView = () => {
                         >
                             Awaits.
                         </Typography>
-                        <Box sx={{ mt: "30px", gap: "5px", display: "flex" }}>
+                        <Box sx={{ mt: "30px", gap: "10px", display: "flex" }}>
                             {isLoggedIn()?.username ? <>
                                 <Button variant="contained" sx={{ color: "primary.main", backgroundColor: "secondary.main", width: { lg: "140px", md: "140px", sm: "120px", xs: "100px" }, ":hover": { color: "secondary.main", backgroundColor: "primary.main", boxShadow: "0px 10px 10px rgba(0, 0, 0.1, 0.1)" } }}>Explore</Button>
 
@@ -115,7 +116,7 @@ const LandingView = () => {
                         </Box>
                     </Box>
                     <Box>
-                        {/* <Quiz/> */}
+                        <Link to={"dosha"}>hello</Link>
                     </Box>
                 </Box>
             </>

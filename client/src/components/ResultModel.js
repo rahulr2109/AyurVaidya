@@ -176,9 +176,13 @@ export default function ResultModel({ finalData, raw, name, isDarawer, text, mom
                     </Box>
                 </DialogContent>
                 <DialogActions>
-                    <Button autoFocus onClick={handleData} variant='contained' disabled={!raw}>
-                        Save to History
+                    <Button autoFocus variant='outlined' disabled={!raw}>
+                        Download
                     </Button>
+                    <Button autoFocus onClick={handleData} variant='contained' disabled={!raw}>
+                        Save
+                    </Button>
+
                 </DialogActions>
             </BootstrapDialog>
         </React.Fragment>

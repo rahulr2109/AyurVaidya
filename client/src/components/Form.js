@@ -49,12 +49,15 @@ const Form = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading1(true);
         try {
             const newData = await sendForm(FormData);
             // console.log(FormData)
             if (newData) {
                 // setTreatmentsData(newData);
+                setLoading1(false);
                 setDisease(newData)
+
                 // console.log(newData)
                 // console.log(disease)
                 // console.log(newData)

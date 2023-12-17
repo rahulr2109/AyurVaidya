@@ -12,6 +12,7 @@ import { createContext } from "react";
 import { isLoggedIn } from "../../helpers/authHelper";
 import { fetchUserHistoryData } from "../../api/Data";
 import PredictionResults from "../PredictionResults";
+import Loading from "../Loading";
 
 export const formResponseData = createContext();
 
@@ -21,6 +22,22 @@ const Home = () => {
   const [treatmentsData, setTreatmentsData] = useState([]);
   const [Loading1, setLoading1] = useState(false);
   const [x, setx] = useState(true);
+
+  const [disease, setDisease] = useState({
+    Disease: [],
+    Probability: [],
+  });
+  const [FormDataModel, setFormDataModel] = useState({
+    Age: "",
+    Gender: "",
+    Severity: "",
+    SelectedOptions: [],
+  });
+  // console.log(userHistoryData);
+  // console.log(treatmentsData);
+  // console.log(disease)
+
+  // console.log(disease?.Disease.length)
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -34,9 +51,9 @@ const Home = () => {
         console.log("Error fetching data:", err);
       }
     };
-
     fetchData();
   }, [x]);
+  // console.log(disease)
   const mobile = width < 800;
   useEffect(() => {
     updateDimensions();
@@ -53,7 +70,17 @@ const Home = () => {
 
   return (
     <formResponseData.Provider
-      value={{ setLoading1, setUserHistoryData, setTreatmentsData, setx, x }}
+      value={{
+        setLoading1,
+        setUserHistoryData,
+        setTreatmentsData,
+        setx,
+        x,
+        disease,
+        setDisease,
+        setFormDataModel,
+        FormDataModel,
+      }}
     >
       <Container>
         <Navbar />
@@ -63,6 +90,7 @@ const Home = () => {
               container
               sx={{ height: "calc(100vh - 110px)" }}
               alignItems="stretch"
+              overflowY="scroll"
             >
               {!mobile ? (
                 <>
@@ -119,11 +147,13 @@ const Home = () => {
                       backgroundColor: "#bcd9b6 ",
                     }}
                   >
-                    {treatmentsData.length !== 0 ? (
+                    {disease?.Disease?.length !== 0 && !Loading1 && (
                       <>
-                        <PredictionResults data={treatmentsData} />
+                        <PredictionResults data={disease} />
                       </>
-                    ) : (
+                    )}
+
+                    {disease?.Disease.length === 0 && !Loading1 && (
                       <>
                         {" "}
                         <Box
@@ -188,6 +218,19 @@ const Home = () => {
                         </Box>
                       </>
                     )}
+                    {disease?.Disease.length === 0 && Loading1 && (
+                      <Box
+                        sx={{
+                          height: "100%",
+                          width: "100%",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          display: "flex",
+                        }}
+                      >
+                        <Loading />
+                      </Box>
+                    )}
                   </Grid>
                 </>
               ) : (
@@ -197,23 +240,25 @@ const Home = () => {
                   sx={{
                     borderRight: 1,
                     borderColor: "divider",
-                    minHeight: "95vh",
+                    minHeight: "80vh",
                     backgroundColor: "#BCD9B6",
                     color: "#3C3C3C",
                     height: "auto",
+                    overflowY: "scroll",
                   }}
                 >
                   <Box sx={{ height: "auto", background: "#F5F5DC" }}>
                     <HomeDrawer data={userHistoryData} />
                   </Box>
 
-                  {treatmentsData.length !== 0 ? (
+                  {disease.Disease.length !== 0 && !Loading1 && (
                     <>
-                      <PredictionResults data={treatmentsData} />
+                      <PredictionResults data={disease} />
                     </>
-                  ) : (
+                  )}
+
+                  {disease?.Disease.length === 0 && !Loading1 && (
                     <>
-                      {" "}
                       <Typography
                         sx={{
                           color: "#168423",
@@ -238,6 +283,20 @@ const Home = () => {
                         <Form />
                       </Box>
                     </>
+                  )}
+
+                  {disease?.Disease.length === 0 && Loading1 && (
+                    <Box
+                      sx={{
+                        height: "100%",
+                        width: "100%",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        display: "flex",
+                      }}
+                    >
+                      <Loading />
+                    </Box>
                   )}
                 </Grid>
               )}

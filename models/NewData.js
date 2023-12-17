@@ -10,6 +10,7 @@ const formulationSchema = new mongoose.Schema({
         vipaka: { type: String },
     },
     contraindications: [{ type: String }],
+    benefits: [{ type: String }],
 });
 
 const diseaseSchema = new mongoose.Schema({
@@ -21,6 +22,7 @@ const diseaseSchema = new mongoose.Schema({
     },
     description: { type: String },
     formulations: [formulationSchema],
+    warning: { type: String },
 });
 
 

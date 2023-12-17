@@ -10,13 +10,14 @@ import { Container } from '@mui/material';
 
 
 
+
 const Form = () => {
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [age, setAge] = useState('');
     const [gender, setGender] = useState('');
     const [severity, setSeverity] = useState('');
-    const [Dieseas, setDieases] = useState("");
-    const { setLoading1, setUserHistoryData, setTreatmentsData, setx, x } = useContext(formResponseData);
+    // const [Dieseas, setDieases] = useState("");
+    const { setLoading1, setUserHistoryData, setTreatmentsData, setx, x, disease, setDisease, setFormDataModel, FormDataModel } = useContext(formResponseData);
 
 
     const [FormData, setFormData] = useState({
@@ -24,7 +25,6 @@ const Form = () => {
         Gender: "",
         Severity: "",
         SelectedOptions: []
-
     });
     const [ServerError, setServerError] = useState("");
 
@@ -36,24 +36,32 @@ const Form = () => {
     React.useEffect(() => {
         setFormData(
             {
-
                 Age: age,
                 Gender: gender,
                 Severity: severity,
                 Symptoms: selectedOptions
             }
         );
+
     }, [selectedOptions, age, gender, severity]);
 
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading1(true);
         try {
-            const newData = await sendFormServer(FormData, isLoggedIn());
+            const newData = await sendForm(FormData);
+            // console.log(FormData)
+            if (newData) {
+                // setTreatmentsData(newData);
+                setLoading1(false);
+                setDisease(newData)
 
-            if (newData.success === "true") {
-                setTreatmentsData(newData.TreatRem);
+                // console.log(newData)
+                // console.log(disease)
+                // console.log(newData)
+                setFormDataModel(FormData)
                 setx((x) => !x)
                 // console.log(newData)
 
@@ -65,7 +73,7 @@ const Form = () => {
     };
 
     return (
-        <Container className='form' sx={{ padding: "10px", boxShadow: "10px 10px 10px 10px rgba(0, 0, 0, 0.1)" }}>
+        <Container className='form' sx={{ padding: "10px", boxShadow: "10px 10px 10px 10px rgba(0, 0, 0, 0.1)", overflowY: "scroll" }}>
             <Grid container spacing={5} justifyContent="center" alignItems="center">
                 <Grid item xs={6}>
                     <TextField

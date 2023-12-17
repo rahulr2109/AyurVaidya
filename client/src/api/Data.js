@@ -2,6 +2,7 @@ import { BASE_URL } from "../config";
 
 
 const NEW_URL = "https://disease-predictor-ewie.onrender.com/predict"
+const IMAGE_URL = "https://disease-predictor-ewie.onrender.com/predict_image"
 
 const sendForm = async (data) => {
     try {
@@ -60,7 +61,49 @@ const fetchUserHistoryData = async (user) => {
     }
 };
 
+const getFormServer = async (data, user) => {
+    try {
+
+        // console.log(data)
+
+        const res = await fetch(BASE_URL + "api/data/get", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                "x-access-token": user.token,
+            },
+            body: JSON.stringify(data)
+        });
+        return await res.json();
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+
+const imageRecognition = async (data) => {
+    try {
+
+        // console.log(JSON.stringify(data));
+
+        const res = await fetch(IMAGE_URL, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ image: data })
+        });
+        return await res.json();
+    } catch (err) {
+        console.log(err);
+    }
+};
 
 
 
-export { sendForm, sendFormServer, fetchUserHistoryData };
+
+
+
+export { sendForm, sendFormServer, fetchUserHistoryData, getFormServer, imageRecognition };

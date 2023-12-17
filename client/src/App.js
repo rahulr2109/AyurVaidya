@@ -33,6 +33,7 @@ import { createTheme } from "@mui/material";
 import Home from "./components/views/Home";
 import ImageRecognition from "./components/views/ImageRecognition";
 import Download from "./components/views/Download";
+import Quiz from "./components/views/Quiz";
 
 
 const ntheme = createTheme({
@@ -45,6 +46,11 @@ const ntheme = createTheme({
     fontWeightLight: 400,
     fontWeightRegular: 500,
     fontWeightMedium: 800,
+  },
+  avatar: {
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center center',
   },
 });
 
@@ -61,6 +67,7 @@ function App() {
         <CssBaseline />
 
         <Routes>
+          <Route path="/dosha" element={<Quiz />} />
           <Route path="/" element={<LandingView />} />
           <Route path="/imagerecogntion" element={<ImageRecognition />} />
           <Route path="/download" element={<Download />} />

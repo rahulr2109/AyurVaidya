@@ -10,15 +10,75 @@ import homelogo from "../../Images/home.jpeg";
 import { Container, Typography, Button } from "@mui/material";
 import { isLoggedIn } from "../../helpers/authHelper";
 import Quiz from "./Quiz";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import image from "../../Images/image.png"
+
+
+
+
+
+
+const NewCard = ({ title }) => {
+    const navigate = useNavigate();
+
+    return (
+        <Box sx={{ border: 1, borderRadius: "10px", backgroundColor: "#469C45" }}>
+
+            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "10px", minHeight: "20vh", width: "100%", flexDirection: "column", paddingBottom: "20px" }}>
+
+                <Typography sx={{ width: "100%", fontSize: "30px", flex: 3, padding: { lg: "10px", md: "5px", sm: "5px", xs: "5px", textAlign: "center" } }}>Take a Quiz to know About your body's <strong style={{ color: "white" }}>Prakriti</strong>.</Typography>
+                {/* <Typography sx={{ fontSize: "20px", fontWeight: "bold", flex: 1 }}>Take a Quiz to know About your body's Prakriti</Typography> */}
+
+                <Button variant="contained" onClick={() => navigate('/dosha')} sx={{
+                    backgroundColor: "secondary.main", color: "primary.main",
+                    width: { lg: "30%", md: "40%", sm: "50%", xs: "60%" },
+
+                    transition: "all 0.2s ease-in-out",
+                    ":hover": {
+
+
+                        backgroundColor: "primary.main",
+                        color: "secondary.main",
+                        boxShadow: "0px 10px 10px rgba(0, 0, 0.1, 0.1)",
+
+                    }
+                }}>Take Quiz</Button>
+
+            </Box>
+
+
+
+
+        </Box>
+    )
+}
+
+
+
+const Features = () => {
+    return (
+        <>
+
+
+
+        </>
+
+
+    )
+}
+
+
+
 
 
 const img =
     "https://media.istockphoto.com/id/1160620218/photo/beautiful-nature-background-from-green-leaves-with-detailed-texture-greenery-top-view-closeup.jpg?s=612x612&w=0&k=20&c=hiwAxq9f9WD7dEw8SCckV6CJg0RHvqRo4mgbHA_g9Qo=";
 
-console.log(isLoggedIn())
+// console.log(isLoggedIn())
 
 const LandingView = () => {
+
+
     return (
         <Container>
             <Navbar />
@@ -29,6 +89,7 @@ const LandingView = () => {
                         borderRadius: "10px",
                         minHeight: "85vh",
                         // border: 1,
+                        overflowY: "scroll",
                     }}
                 >
                     <Box
@@ -45,6 +106,7 @@ const LandingView = () => {
                             backgroundSize: "cover",
                             backgroundOrigin: "content-box",
                             backgroundPosition: "center",
+                            paddingBottom: "10px",
                         }}
                     >
                         <img
@@ -100,27 +162,81 @@ const LandingView = () => {
                         >
                             Awaits.
                         </Typography>
-                        <Box sx={{ mt: "30px", gap: "10px", display: "flex" }}>
-                            {isLoggedIn()?.username ? <>
-                                <Button variant="contained" sx={{ color: "primary.main", backgroundColor: "secondary.main", width: { lg: "140px", md: "140px", sm: "120px", xs: "100px" }, ":hover": { color: "secondary.main", backgroundColor: "primary.main", boxShadow: "0px 10px 10px rgba(0, 0, 0.1, 0.1)" } }}>Explore</Button>
-
-
-                            </> : <>
-                                <Button variant="outlined" sx={{ color: "primary.main", backgroundColor: "secondary.main", width: { lg: "120px", md: "30px", sm: "30px", xs: "30px" }, ":hover": { color: "secondary.main", backgroundColor: "primary.main", boxShadow: "0px 10px 10px rgba(0, 0, 0.1, 0.1)" } }}>Login</Button>
-                                <Button variant="outlined" sx={{
-                                    backgroundColor: "primary.main", color: "secondary.main", width: { lg: "120px", md: "30px", sm: "30px", xs: "30px" }
-                                }}>Signup</Button>
-
-                            </>}
-
+                        <Box sx={{ mt: { lg: "30px", md: "10px", sm: "10px", xs: "10px" }, gap: "10px", display: "flex" }}>
+                            {isLoggedIn()?.username ? (
+                                <>
+                                    <Button
+                                        variant="contained"
+                                        sx={{
+                                            color: "primary.main",
+                                            backgroundColor: "secondary.main",
+                                            width: {
+                                                lg: "140px",
+                                                md: "140px",
+                                                sm: "120px",
+                                                xs: "100px",
+                                            },
+                                            ":hover": {
+                                                color: "secondary.main",
+                                                backgroundColor: "primary.main",
+                                                boxShadow: "0px 10px 10px rgba(0, 0, 0.1, 0.1)",
+                                            },
+                                        }}
+                                    >
+                                        Explore
+                                    </Button>
+                                </>
+                            ) : (
+                                <>
+                                    <Button
+                                        variant="outlined"
+                                        sx={{
+                                            color: "primary.main",
+                                            backgroundColor: "secondary.main",
+                                            width: {
+                                                lg: "120px",
+                                                md: "30px",
+                                                sm: "30px",
+                                                xs: "30px",
+                                            },
+                                            ":hover": {
+                                                color: "secondary.main",
+                                                backgroundColor: "primary.main",
+                                                boxShadow: "0px 10px 10px rgba(0, 0, 0.1, 0.1)",
+                                            },
+                                        }}
+                                    >
+                                        Login
+                                    </Button>
+                                    <Button
+                                        variant="outlined"
+                                        sx={{
+                                            backgroundColor: "primary.main",
+                                            color: "secondary.main",
+                                            width: {
+                                                lg: "120px",
+                                                md: "30px",
+                                                sm: "30px",
+                                                xs: "30px",
+                                            },
+                                        }}
+                                    >
+                                        Signup
+                                    </Button>
+                                </>
+                            )}
                         </Box>
                     </Box>
-                    <Box>
-                        <Link to={"dosha"}>hello</Link>
+                    <Box className="Section2" sx={{ width: "100%", minHeight: "20%", mt: "10px" }}>
+                        <NewCard title="Card Title" />
                     </Box>
+                    <Box className="featureBox"></Box>
+
+
                 </Box>
+
             </>
-        </Container>
+        </Container >
     );
 };
 

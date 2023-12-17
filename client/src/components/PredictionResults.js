@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container, Typography } from "@mui/material";
+import { Button, Container, Stack, Typography } from "@mui/material";
 import { FaBackward } from "react-icons/fa";
 import { Box, IconButton, Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -55,7 +55,7 @@ const Card = ({ name, chance, data1 }) => {
         // justifyContent: "center",
         alignItems: "center",
         width: { xs: "85%", md: "95%" },
-        height: "150px",
+        height: "190px",
         backgroundColor: "#f5f5dc",
         fontFamily: "monospace",
         borderRadius: "10px",
@@ -116,7 +116,7 @@ const PredictionResults = ({ data }) => {
 
         display: "flex",
         flexWrap: "wrap",
-        padding: "1rem",
+        // padding: "1rem",
         // paddingTop: "3.4rem",
       }}
     >  <Box sx={{ backgroundColor: "transaparent", height: "9%", width: "100%", position: "relative", mb: "20px" }}>
@@ -139,7 +139,7 @@ const PredictionResults = ({ data }) => {
                 height: "30px",
                 width: "30px",
                 color: "#2E4450",
-                padding: "5px"
+                // padding: "5px"
               }}
             />}
           >
@@ -172,8 +172,10 @@ const PredictionResults = ({ data }) => {
         </Tooltip>
       </Box>
       {
+
         [0, 1, 2].map((item) => { return <Card name={data?.Disease[item]} chance={data?.Probability[item]} data1={FormDataModel} /> })
       }
+
     </Box>
   );
 };

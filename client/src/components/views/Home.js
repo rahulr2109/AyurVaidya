@@ -12,6 +12,7 @@ import { createContext } from "react";
 import { isLoggedIn } from "../../helpers/authHelper";
 import { fetchUserHistoryData } from "../../api/Data";
 import PredictionResults from "../PredictionResults";
+import Loading from "../Loading"
 
 export const formResponseData = createContext();
 
@@ -34,6 +35,9 @@ const Home = () => {
   // console.log(userHistoryData);
   // console.log(treatmentsData);
   // console.log(disease)
+
+
+  // console.log(disease?.Disease.length)
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -76,6 +80,7 @@ const Home = () => {
               container
               sx={{ height: "calc(100vh - 110px)" }}
               alignItems="stretch"
+              overflowY="scroll"
             >
               {!mobile ? (
                 <>
@@ -132,75 +137,75 @@ const Home = () => {
                       backgroundColor: "#bcd9b6 ",
                     }}
                   >
-                    {disease?.Disease.length !== 0 ? (
+                    {disease?.Disease?.length !== 0 && !Loading1 && (
                       <>
                         <PredictionResults data={disease} />
                       </>
-                    ) : (
-                      <>
-                        {" "}
+                    )
+
+                    }
+
+                    {disease?.Disease.length === 0 && !Loading1 && <>    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        mt: "30px",
+                        flexDirection: "column",
+                        gap: "1rem",
+                      }}
+                    >
+                      <Avatar
+                        src={Logo}
+                        alt="logo"
+                        style={{
+                          height: "10%",
+                          width: "10%",
+                          borderRadius: "50%",
+                          aspectRatio: "3/2",
+                          border: "1px solid #168423",
+                        }}
+                      />
+                      <Typography
+                        sx={{
+                          fontSize: "20px",
+                          fontWeight: "bold",
+                          color: "#168423",
+                        }}
+                      >
+                        Fill the Details!
+                      </Typography>
+                    </Box>
+                      <Box
+                        sx={{
+                          width: "100%",
+                          display: "flex",
+                          justifyContent: "center",
+                        }}
+                      >
                         <Box
                           sx={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            mt: "30px",
-                            flexDirection: "column",
-                            gap: "1rem",
+                            height: "auto",
+                            width: "70%",
+                            mt: "2rem",
+                            borderRadius: "10px",
                           }}
                         >
-                          <Avatar
-                            src={Logo}
-                            alt="logo"
-                            style={{
-                              height: "10%",
-                              width: "10%",
-                              borderRadius: "50%",
-                              aspectRatio: "3/2",
-                              border: "1px solid #168423",
-                            }}
-                          />
-                          <Typography
+                          <Grid
+                            container
                             sx={{
-                              fontSize: "20px",
-                              fontWeight: "bold",
-                              color: "#168423",
+                              height: "100%",
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                              padding: "20px",
                             }}
                           >
-                            Fill the Details!
-                          </Typography>
+                            <Form />
+                          </Grid>
                         </Box>
-                        <Box
-                          sx={{
-                            width: "100%",
-                            display: "flex",
-                            justifyContent: "center",
-                          }}
-                        >
-                          <Box
-                            sx={{
-                              height: "auto",
-                              width: "70%",
-                              mt: "2rem",
-                              borderRadius: "10px",
-                            }}
-                          >
-                            <Grid
-                              container
-                              sx={{
-                                height: "100%",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                padding: "20px",
-                              }}
-                            >
-                              <Form />
-                            </Grid>
-                          </Box>
-                        </Box>
-                      </>
-                    )}
+                      </Box></>}
+                    {disease?.Disease.length === 0 && Loading1 && <Box sx={{ height: "100%", width: "100%", justifyContent: "center", alignItems: "center", display: "flex" }}><Loading /></Box>}
                   </Grid>
                 </>
               ) : (
@@ -210,23 +215,27 @@ const Home = () => {
                   sx={{
                     borderRight: 1,
                     borderColor: "divider",
-                    minHeight: "95vh",
+                    minHeight: "80vh",
                     backgroundColor: "#BCD9B6",
                     color: "#3C3C3C",
                     height: "auto",
+                    overflowY: "scroll"
                   }}
                 >
                   <Box sx={{ height: "auto", background: "#F5F5DC" }}>
                     <HomeDrawer data={userHistoryData} />
                   </Box>
 
-                  {disease.Disease.length !== 0 ? (
+                  {disease.Disease.length !== 0 && !Loading1 &&
                     <>
                       <PredictionResults data={disease} />
                     </>
-                  ) : (
+                  }
+
+
+                  {
+                    disease?.Disease.length === 0 && !Loading1 &&
                     <>
-                      {" "}
                       <Typography
                         sx={{
                           color: "#168423",
@@ -251,7 +260,8 @@ const Home = () => {
                         <Form />
                       </Box>
                     </>
-                  )}
+                  }
+                  {disease?.Disease.length === 0 && Loading1 && <Box sx={{ height: "100%", width: "100%", justifyContent: "center", alignItems: "center", display: "flex" }}><Loading /></Box>}
                 </Grid>
               )}
             </Grid>

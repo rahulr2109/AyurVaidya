@@ -22,9 +22,6 @@ const Home = () => {
   const [Loading1, setLoading1] = useState(false);
   const [x, setx] = useState(true);
 
-  // console.log(userHistoryData);
-  console.log(treatmentsData);
-
   React.useEffect(() => {
     const fetchData = async () => {
       try {

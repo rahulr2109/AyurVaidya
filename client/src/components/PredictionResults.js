@@ -6,19 +6,6 @@ import { FaBackward } from "react-icons/fa";
 import { Box, IconButton, Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
 
-// const Card = ({ data }) => {
-
-//     return (
-//         <Container>
-
-// heelo
-
-//         <Contaier/>
-//     )
-
-// }
-
-// console.log(data);
 const Card = ({ data }) => {
   const handleSubmit = () => {};
 

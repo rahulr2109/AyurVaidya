@@ -63,8 +63,14 @@ function Quiz() {
 
       <Box sx={{ height: "85vh", width: "100%", border: 1, display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "#2E4450", opacity: "0.5", borderRadius: "10px" }}>
 
-
         <div className="container" >
+          <div className="image-container">
+            <img
+              src="https://www.drshikhasharma.com/wp-content/uploads/2019/01/08b5e14c-c65d-48eb-afd7-197b072a5eb4.jpg"
+              alt="Quiz Image"
+              className="quiz-image"
+            />
+          </div>
           {showResult ? (
             <QuizResult
               score={ans}

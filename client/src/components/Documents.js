@@ -46,15 +46,16 @@ const Documents = () => {
 
     return (
         <>
-            <Box sx={{ height: "100vh", width: "100vw" }}>
-                <PDFViewer style={{ height: "100%", width: "100%" }} >
-                    <Document>
-                        <Page size="A4" style={styles.page}>
-                            {/* [0,1,2].map(()=>{ }) */}
-                        </Page>
-                    </Document>
-                </PDFViewer>
-            </Box>
+            {/* <Box sx={{ height: "100vh", width: "100vw" }}>
+                <PDFViewer style={{ height: "100%", width: "100%" }} > */}
+            <Document>
+                <Page size="A4" style={styles.page}>
+                    {/* [0,1,2].map(()=>{ }) */}
+                    hello
+                </Page>
+            </Document>
+            {/* </PDFViewer>
+            </Box> */}
         </>
     )
 }

@@ -1,4 +1,4 @@
-// quizQuestion.js
+
 
 const quizQuestion = [
     {

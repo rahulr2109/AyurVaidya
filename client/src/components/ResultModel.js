@@ -18,6 +18,8 @@ import { Stack } from '@mui/material';
 import { ListItemText } from '@mui/material';
 import Moment from 'react-moment';
 import { ListItemButton } from '@mui/material';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import Documents from './Documents';
 
 
 
@@ -175,10 +177,14 @@ export default function ResultModel({ finalData, raw, name, isDarawer, text, mom
 
                     </Box>
                 </DialogContent>
-                <DialogActions>
-                    <Button autoFocus variant='outlined' disabled={!raw}>
-                        Download
-                    </Button>
+                <DialogActions sx={{ display: "flex", gap: "0.5rem" }}>
+
+
+                    <PDFDownloadLink document={<Documents />} fileName='somename.pdf' style={{ textDecoration: 'none' }}>
+                        {({ loading }) => (loading ? 'Loading document...' : <Button autoFocus variant='outlined' disabled={!raw}>
+                            Download
+                        </Button>)}
+                    </PDFDownloadLink>
                     <Button autoFocus onClick={handleData} variant='contained' disabled={!raw}>
                         Save
                     </Button>

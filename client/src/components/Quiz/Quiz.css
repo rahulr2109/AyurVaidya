@@ -1,0 +1,123 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 400px;
+  width: 400px;
+  background-color: #F5F5DC;
+  border-radius: 15px;
+  box-shadow: 2px 2px 10px 1px #333;
+  overflow: hidden;
+  padding: 10px;
+  position: relative;
+}
+
+.heading-txt {
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.question {
+  margin: 8px;
+  box-shadow: 0px 0px 10px 1px #a2a3a3;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: large;
+  font-weight: 600;
+  font-family: "Times New Roman", Times, serif;
+  min-width: 100%;
+  min-height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#question-number {
+  margin-right: 5px;
+}
+
+.option-container {
+  display: flex;
+  flex-direction: column;
+  margin: 6px 4px;
+  width: 100%;
+  padding: 10px;
+}
+
+.option-btn {
+  box-shadow: 0px 0px 4px 1px rgb(128, 123, 123);
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+  outline: none;
+  transition: 0.3s;
+  margin: 5px;
+  min-height: 30px;
+  background-color: white;
+  
+}
+
+.checked {
+  background-color:  #2E4450;;
+  color: white;
+  box-shadow: 3px 3px 4px 1px rgb(78, 69, 78);
+}
+
+.option-btn:hover {
+  background-color: #2E4450;
+  color:#0EA220;
+}
+
+#next-button {
+  padding: 5px;
+  border: none;
+  background-color: #2E4450;
+  color: white;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  transition: 0.2s;
+  width: 100px;
+  position: absolute;
+  bottom: 15px;
+}
+
+#next-button:active {
+  box-shadow: none;
+}
+
+.show-score {
+  position: absolute;
+  top: 30%;
+  font-size: 40px;
+  text-align: center;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .heading-txt {
+    font-size: 24px;
+  }
+
+  .question {
+    min-height: 70px;
+  }
+
+  .option-container {
+    margin: 4px;
+  }
+
+  #next-button {
+    width: 80px;
+  }
+}

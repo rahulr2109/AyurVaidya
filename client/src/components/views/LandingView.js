@@ -1,30 +1,84 @@
 import React from "react";
 import Navbar from "../Navbar";
-
-import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
-import { PDFViewer } from "@react-pdf/renderer";
 import { Box } from "@mui/material";
-import Documents from "../Documents";
-import bg from "../../Images/newbg.png";
-import homelogo from "../../Images/home.jpeg";
 import { Container, Typography, Button } from "@mui/material";
 import { isLoggedIn } from "../../helpers/authHelper";
-import Quiz from "./Quiz";
+// import Quiz from "./Quiz";
 import { Link, useNavigate } from "react-router-dom";
-import image from "../../Images/image.png"
+// import image from "../../Images/image.png"s
+import searchIcon from "../../Images/searchIcons.jpg"
+import question from "../../Images/question.png"
+import ml from "../../Images/machine-learning-colorful-round-vector-line-illustration-dark-background_104589-1784-removebg-preview.png"
+import { Grid } from "@mui/material";
+
+
+const featureData = [
+    {
+        label: "Recognition of herbs and plants using Machine Learning",
+        // img: searchIcon,
+        // bg: "#469C45",
+        colo: "white",
+        // rout: "imagerecogntion"
+    },
+    {
+        label: "Prediction of disease and its cure ",
+        img: ml,
+        // bg: "#467c45",
+        colo: "white",
+        // rout: "predict"
+    },
+    {
+        label: "Buid communities with our servies",
+        img: question,
+        // bg: "#468c45",
+        // colo: "white",
+        // rout: "question"
+    }
+]
+// console.log(i);
+// < Features bag={featureData[i].bg} col={featureData[i].colo} imgg={featureData[i].img} labela={featureData[i].label} routes={featureData[i].rout} />
+
+
+const Features = ({ labela, imgg, bag, col, routes }) => {
+    const navigate = useNavigate();
+    return (
+        <>
+            <Box sx={{ border: 1, borderRadius: "10px", backgroundColor: "#469C45" }}>
+
+                <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "10px", minHeight: "25vh", width: "100%", flexDirection: "column", paddingBottom: "20px" }}>
+                    <Typography > {labela}</Typography>
+                    <Button variant="contained" onClick={() => navigate(`/${routes}`)} sx={{
+                        backgroundColor: `${bag}`, color: `${col}`,
+                        width: { lg: "30%", md: "40%", sm: "50%", xs: "60%" },
+                        transition: "all 0.2s ease-in-out",
+                        ":hover": {
+                            backgroundColor: `${col}`,
+                            color: `${bag}`,
+                            boxShadow: "0px 10px 10px rgba(0, 0, 0.1, 0.1)",
+
+                        }
+                    }}>See details</Button>
+
+                </Box>
+
+            </Box>
+
+        </>
+
+
+    )
+}
 
 
 
 
-
-
-const NewCard = ({ title }) => {
+const NewCard = () => {
     const navigate = useNavigate();
 
     return (
-        <Box sx={{ border: 1, borderRadius: "10px", backgroundColor: "#469C45" }}>
+        <Box sx={{ borderRadius: "10px", backgroundColor: "#469C45" }}>
 
-            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "10px", minHeight: "20vh", width: "100%", flexDirection: "column", paddingBottom: "20px" }}>
+            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "10px", minHeight: "25vh", width: "100%", flexDirection: "column", paddingBottom: "20px" }}>
 
                 <Typography sx={{ width: "100%", fontSize: "30px", flex: 3, padding: { lg: "10px", md: "5px", sm: "5px", xs: "5px", textAlign: "center" } }}>Take a Quiz to know About your body's <strong style={{ color: "white" }}>Prakriti</strong>.</Typography>
                 {/* <Typography sx={{ fontSize: "20px", fontWeight: "bold", flex: 1 }}>Take a Quiz to know About your body's Prakriti</Typography> */}
@@ -46,24 +100,7 @@ const NewCard = ({ title }) => {
 
             </Box>
 
-
-
-
         </Box>
-    )
-}
-
-
-
-const Features = () => {
-    return (
-        <>
-
-
-
-        </>
-
-
     )
 }
 
@@ -74,10 +111,10 @@ const Features = () => {
 const img =
     "https://media.istockphoto.com/id/1160620218/photo/beautiful-nature-background-from-green-leaves-with-detailed-texture-greenery-top-view-closeup.jpg?s=612x612&w=0&k=20&c=hiwAxq9f9WD7dEw8SCckV6CJg0RHvqRo4mgbHA_g9Qo=";
 
-// console.log(isLoggedIn())
+
 
 const LandingView = () => {
-
+    const navigate = useNavigate();
 
     return (
         <Container>
@@ -190,6 +227,7 @@ const LandingView = () => {
                                 <>
                                     <Button
                                         variant="outlined"
+                                        onClick={() => navigate("/login")}
                                         sx={{
                                             color: "primary.main",
                                             backgroundColor: "secondary.main",
@@ -210,6 +248,7 @@ const LandingView = () => {
                                     </Button>
                                     <Button
                                         variant="outlined"
+                                        onClick={() => navigate("/signup")}
                                         sx={{
                                             backgroundColor: "primary.main",
                                             color: "secondary.main",
@@ -227,10 +266,22 @@ const LandingView = () => {
                             )}
                         </Box>
                     </Box>
-                    <Box className="Section2" sx={{ width: "100%", minHeight: "20%", mt: "10px" }}>
-                        <NewCard title="Card Title" />
+                    <Box className="Section2" sx={{ width: "100%", minHeight: "20%", mt: "10px", mb: "10px" }}>
+                        <NewCard />
                     </Box>
-                    <Box className="featureBox"></Box>
+                    <Box className="featureBox" sx={{ height: "auto" }}>
+                        {
+                            [0, 1, 2].map((i) => {
+                                console.log(i);
+                                < Features bag={featureData[i].bg} col={featureData[i].colo} imgg={featureData[i].img} labela={featureData[i].label} routes={featureData[i].rout} />
+                            })
+                        }
+                    </Box>
+
+
+
+
+
 
 
                 </Box>

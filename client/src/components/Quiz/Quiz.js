@@ -3,6 +3,8 @@ import { QuizData } from "./Data";
 import QuizResult from "./QuizResult";
 import "./Quiz.css";
 import { set } from "mongoose";
+import { Box, Container } from "@mui/material";
+import Navbar from "../Navbar";
 function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
@@ -56,47 +58,52 @@ function Quiz() {
     setScore(0);
   };
   return (
-    <div>
-      <p className="heading-txt">Quiz APP</p>
-      <div className="container">
-        {showResult ? (
-          <QuizResult
-            score={ans}
-            // totalScore={QuizData.length}
-            tryAgain={resetAll}
-          />
-        ) : (
-          <>
-            <div className="question">
-              <span id="question-number">{currentQuestion + 1}. </span>
-              <span id="question-txt">{QuizData[currentQuestion].Q}</span>
-            </div>
-            <div className="option-container">
-              {QuizData[currentQuestion].C.map((option, i) => {
-                return (
-                  <button
-                    // className="option-btn"
-                    className={`option-btn ${
-                      clickedOption == i + 1 ? "checked" : null
-                    }`}
-                    key={i}
-                    onClick={() => setClickedOption(i + 1)}
-                  >
-                    {option}
-                  </button>
-                );
-              })}
-            </div>
-            <input
-              type="button"
-              value="Next"
-              id="next-button"
-              onClick={changeQuestion}
+    <Container>
+      <Navbar />
+
+      <Box sx={{ height: "85vh", width: "100%", border: 1, display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "#2E4450", opacity: "0.5", borderRadius: "10px" }}>
+
+
+        <div className="container" >
+          {showResult ? (
+            <QuizResult
+              score={ans}
+              // totalScore={QuizData.length}
+              tryAgain={resetAll}
             />
-          </>
-        )}
-      </div>
-    </div>
+          ) : (
+            <>
+              <div className="question">
+                <span id="question-number">{currentQuestion + 1}. </span>
+                <span id="question-txt">{QuizData[currentQuestion].Q}</span>
+              </div>
+              <div className="option-container">
+                {QuizData[currentQuestion].C.map((option, i) => {
+                  return (
+                    <button
+                      // className="option-btn"
+                      className={`option-btn ${clickedOption == i + 1 ? "checked" : null
+                        }`}
+                      key={i}
+                      onClick={() => setClickedOption(i + 1)}
+                    >
+                      {option}
+                    </button>
+                  );
+                })}
+              </div>
+              <input
+                type="button"
+                value="Next"
+                id="next-button"
+                onClick={changeQuestion}
+              />
+            </>
+          )}
+        </div>
+
+      </Box>
+    </Container>
   );
 }
 

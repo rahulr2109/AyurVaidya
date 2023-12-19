@@ -58,58 +58,72 @@ function Quiz() {
     setScore(0);
   };
   return (
-    <Container>
-      <Navbar />
+    <>
+      {showResult ? (
+        <QuizResult
+          score={ans}
+          // totalScore={QuizData.length}
+          tryAgain={resetAll}
+        />
+      ) : (
+        <Container>
+          <Navbar />
 
-      <Box sx={{ height: "85vh", width: "100%", border: 1, display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "#2E4450", opacity: "0.5", borderRadius: "10px" }}>
-
-        <div className="container" >
-          <div className="image-container">
-            <img
-              src="https://www.drshikhasharma.com/wp-content/uploads/2019/01/08b5e14c-c65d-48eb-afd7-197b072a5eb4.jpg"
-              alt="Quiz Image"
-              className="quiz-image"
-            />
-          </div>
-          {showResult ? (
-            <QuizResult
-              score={ans}
-              // totalScore={QuizData.length}
-              tryAgain={resetAll}
-            />
-          ) : (
-            <>
-              <div className="question">
-                <span id="question-number">{currentQuestion + 1}. </span>
-                <span id="question-txt">{QuizData[currentQuestion].Q}</span>
+          <Box
+            sx={{
+              height: "85vh",
+              width: "100%",
+              border: 1,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "#2E4450",
+              opacity: "0.5",
+              borderRadius: "10px",
+            }}
+          >
+            <div className="container">
+              <div className="image-container">
+                <img
+                  src="https://www.drshikhasharma.com/wp-content/uploads/2019/01/08b5e14c-c65d-48eb-afd7-197b072a5eb4.jpg"
+                  alt="Quiz Image"
+                  className="quiz-image"
+                />
               </div>
-              <div className="option-container">
-                {QuizData[currentQuestion].C.map((option, i) => {
-                  return (
-                    <button
-                      // className="option-btn"
-                      className={`option-btn ${clickedOption == i + 1 ? "checked" : null
+
+              <>
+                <div className="question">
+                  <span id="question-number">{currentQuestion + 1}. </span>
+                  <span id="question-txt">{QuizData[currentQuestion].Q}</span>
+                </div>
+                <div className="option-container">
+                  {QuizData[currentQuestion].C.map((option, i) => {
+                    return (
+                      <button
+                        // className="option-btn"
+                        className={`option-btn ${
+                          clickedOption == i + 1 ? "checked" : null
                         }`}
-                      key={i}
-                      onClick={() => setClickedOption(i + 1)}
-                    >
-                      {option}
-                    </button>
-                  );
-                })}
-              </div>
-              <input
-                type="button"
-                value="Next"
-                id="next-button"
-                onClick={changeQuestion}
-              />
-            </>
-          )}
-        </div>
-
-      </Box>
-    </Container>
+                        key={i}
+                        onClick={() => setClickedOption(i + 1)}
+                      >
+                        {option}
+                      </button>
+                    );
+                  })}
+                </div>
+                <input
+                  type="button"
+                  value="Next"
+                  id="next-button"
+                  onClick={changeQuestion}
+                />
+              </>
+            </div>
+          </Box>
+        </Container>
+      )}
+    </>
   );
 }
 

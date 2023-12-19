@@ -62,14 +62,14 @@
 }
 
 .checked {
-  background-color:  #2E4450;;
+  background-color: #0EA220;
   color: white;
   box-shadow: 3px 3px 4px 1px rgb(78, 69, 78);
 }
 
 .option-btn:hover {
-  background-color: #2E4450;
-  color:#0EA220;
+  background-color: #0EA220 ;
+  color: white;
 }
 #next-button {
   padding: 10px;
@@ -83,7 +83,7 @@
   transition: 0.2s;
   width: 100%;
   max-width: 200px; /* Set a maximum width to prevent the button from being too wide */
-  margin-top: 15px; /* Add margin-top for spacing */
+  margin-top: 1px; /*Add margin-top for spacing*/
 }
 
 

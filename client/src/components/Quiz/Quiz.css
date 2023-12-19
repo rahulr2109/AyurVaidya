@@ -62,18 +62,17 @@
 }
 
 .checked {
-  background-color:  #2E4450;;
+  background-color: #0EA220;
   color: white;
   box-shadow: 3px 3px 4px 1px rgb(78, 69, 78);
 }
 
 .option-btn:hover {
-  background-color: #2E4450;
-  color:#0EA220;
+  background-color: #0EA220 ;
+  color: white;
 }
-
 #next-button {
-  padding: 5px;
+  padding: 10px;
   border: none;
   background-color: #2E4450;
   color: white;
@@ -82,10 +81,11 @@
   font-weight: bold;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   transition: 0.2s;
-  width: 100px;
-  position: absolute;
-  bottom: 15px;
+  width: 100%;
+  max-width: 200px; /* Set a maximum width to prevent the button from being too wide */
+  margin-top: 1px; /*Add margin-top for spacing*/
 }
+
 
 #next-button:active {
   box-shadow: none;
@@ -120,4 +120,15 @@
   #next-button {
     width: 80px;
   }
+}
+
+.image-container {
+  display: flex;
+  justify-content: flex-end; /* Align image to the right */
+  width: 100%;
+}
+
+.quiz-image {
+  max-width: 100%; /* Ensure the image is responsive */
+  border-radius: 10px; /* Optional: Add border-radius for rounded corners */
 }

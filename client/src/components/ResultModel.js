@@ -106,7 +106,7 @@ export default function ResultModel({
   text,
   mom,
 }) {
-  //   console.log(finalRefernce);
+  console.log(finalRefernce);
   const finalRefernce = getRefernce(finalData);
   console.log(finalRefernce);
   const [open, setOpen] = React.useState(false);

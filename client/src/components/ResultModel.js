@@ -12,7 +12,7 @@ import { sendFormServer } from "../api/Data";
 import { isLoggedIn } from "../helpers/authHelper";
 import { useContext } from "react";
 import { formResponseData } from "./views/Home";
-import { set } from "mongoose";
+
 import { Box } from "@mui/system";
 import { ListItem, ListItemAvatar, Stack } from "@mui/material";
 import { ListItemText } from "@mui/material";
@@ -22,15 +22,8 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 import Documents from "./Documents";
 import { diseases } from "./References";
 import List from '@mui/material/List';
-// import Accord from "./Accord";
-// import * as React from 'react';
-// import Accordion from '@mui/material/Accordion';
-// import AccordionSummary from '@mui/material/AccordionSummary';
-// import AccordionDetails from '@mui/material/AccordionDetails';
-// import Typography from '@mui/material/Typography';
-// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link } from "react-router-dom";
-// import { Box, Stack } from '@mui/material';
+
 
 
 

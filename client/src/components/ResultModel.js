@@ -29,6 +29,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 // import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Link } from "react-router-dom";
 // import { Box, Stack } from '@mui/material';
 
 
@@ -331,7 +332,8 @@ export default function ResultModel({
                     fontWeight: "bold",
                     fontSize: "20px",
                     color: "secondary.main",
-                    mt: "2rem"
+                    mt: "2rem",
+
 
                   }}
                 >
@@ -344,6 +346,9 @@ export default function ResultModel({
                   <strong>Secondary: </strong>{finalData?.doshic_imbalance?.secondary.join(",")}
 
                 </Typography>
+
+                <Link to={"/dosha"}> Dont know your Prakriti? Click here</Link>
+
               </Stack>
               <Stack>
                 {finalData?.warning === undefined ? (
@@ -417,7 +422,7 @@ export default function ResultModel({
           </DialogContent>
           <DialogActions sx={{ display: "flex", gap: "0.5rem" }}>
             <PDFDownloadLink
-              document={<Documents />}
+              document={<Documents finalData={finalData} />}
               fileName="somename.pdf"
               style={{ textDecoration: "none" }}
             >

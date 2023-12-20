@@ -16,6 +16,7 @@ const UserMessengerEntry = (props) => {
   const recipient = props.conversation.recipient;
   const username = recipient.username;
   const profile = recipient.profile;
+  const expert = recipient.isExpert;
   const selected =
     props.conservant && props.conservant.username === recipient.username;
 
@@ -33,7 +34,7 @@ const UserMessengerEntry = (props) => {
         selected={selected}
       >
         <ListItemAvatar>
-          <UserAvatar height={45} width={45} username={username} userProfile={profile} />
+          <UserAvatar height={45} width={45} username={username} userProfile={profile} expert={expert} />
         </ListItemAvatar>
         <ListItemText
           primary={username}

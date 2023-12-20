@@ -7,7 +7,7 @@ const sendForm = async (data) => {
   try {
     // console.log(JSON.stringify(data));
 
-    const res = await fetch(NEW_URL, {
+    const res = await fetch("https://disease-predictor-ewie.onrender.com/predict", {
       method: "POST",
       headers: {
         Accept: "application/json",

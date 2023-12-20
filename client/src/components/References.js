@@ -9,7 +9,7 @@ export const diseases = [
     ],
   },
   {
-    disease_name: "Alcoholic Hepatitis",
+    disease_name: "Alcoholic hepatitis",
     references: [
       "The Ayurvedic texts like Charaka Samhita and Bhavaprakasha mention the efficacy of certain herbs in managing alcoholic hepatitis.",
       "Kutki (Picrorhiza kurroa) is recognized in Ayurveda for its hepatoprotective properties. Its bitter principles are known to stimulate liver function, aiding in the regeneration of liver cells damaged by alcohol consumption.",
@@ -42,7 +42,7 @@ export const diseases = [
     ],
   },
   {
-    disease_name: "Cervical Spondylosis",
+    disease_name: "Cervical spondylosis",
     references: [
       "Ashtanga Hridaya mentions the usage of Maharasandi Kwath for musculoskeletal disorders like cervical spondylosis. It contains herbs like Rasna, Guduchi, and Ashwagandha, known for their anti-inflammatory and analgesic properties, helpful in reducing pain and inflammation associated with cervical spondylosis.",
       "Brihat Trayodashanga Guggulu is recommended in ancient texts like Charaka Samhita for its efficacy in managing Vata disorders. Its combination of various herbs like Guggulu, Shunthi, and Gokshura may help in relieving symptoms of cervical spondylosis by pacifying aggravated Vata dosha and supporting joint health.",
@@ -50,7 +50,7 @@ export const diseases = [
     ],
   },
   {
-    disease_name: "Chicken Pox",
+    disease_name: "Chicken pox",
     references: [
       "Neem (Azadirachta indica), Haridra (Curcuma longa), and Gandhak Rasayana (sulfur-based preparation) have been mentioned in various Ayurvedic texts for their therapeutic properties in managing chicken pox.",
       "The Charaka Samhita, Sushruta Samhita, and Bhavaprakasha are among the Ayurvedic texts that discuss the efficacy of neem, haridra, and gandhak rasayana in treating skin conditions, including managing symptoms associated with chicken pox.",
@@ -58,7 +58,7 @@ export const diseases = [
     ],
   },
   {
-    disease_name: "Chronic Cholestasis",
+    disease_name: "Chronic cholestasis",
     references: [
       "Kutki (Picrorhiza kurroa), Punarnava (Boerhavia diffusa), and Bhumyamalaki (Phyllanthus niruri) are mentioned in Ayurvedic texts for their hepatoprotective and detoxifying properties, which can be beneficial in managing chronic cholestasis.",
       "Charaka Samhita refers to the use of Kutki for its 'yakritottejaka' (liver-stimulating) properties. It is known to enhance liver function and bile secretion, potentially aiding in the management of chronic cholestasis.",
@@ -83,7 +83,7 @@ export const diseases = [
     ],
   },
   {
-    disease_name: "Dimorphic Hemorrhoids (Piles)",
+    disease_name: "Dimorphic hemmorhoids(piles)",
     references: [
       "According to Ayurvedic texts, the management of Dimorphic Hemorrhoids (Piles) involves the use of several herbal formulations.",
       "Triphala, a combination of three fruits (Amalaki, Bibhitaki, and Haritaki), is mentioned in Sushruta Samhita for its 'tridoshaghna' (balancing all three doshas) and 'anulomana' (promoting normal bowel movements) properties, which can aid in managing hemorrhoids.",
@@ -101,7 +101,7 @@ export const diseases = [
     ],
   },
   {
-    disease_name: "Fungal Infection",
+    disease_name: "Fungal infection",
     references: [
       "Sushruta Samhita and Bhaishajya Ratnavali mention the use of the following herbs for managing fungal infections:",
       "Neem (Azadirachta indica) is known for its potent anti-fungal properties. It is mentioned in ancient texts for its 'krimighna' property, meaning it has qualities to combat various microbes, including fungi.",
@@ -128,7 +128,7 @@ export const diseases = [
     ],
   },
   {
-    disease_name: "Hepatitis A",
+    disease_name: "hepatitis A",
     references: [
       "Bhumyamalaki (Phyllanthus niruri) is recognized for its 'yakritpleehahara' properties in Ayurveda, indicating its beneficial effects on the liver and spleen. It is believed to have hepatoprotective and antiviral actions, potentially aiding in Hepatitis A treatment.",
       "Kutki (Picrorhiza kurroa) is described in Bhavaprakasha for its 'yakritottejak' actions, known to stimulate liver function. It is suggested to possess anti-inflammatory and antiviral properties, potentially assisting in managing Hepatitis A.",

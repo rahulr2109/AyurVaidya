@@ -27,9 +27,6 @@ const cardMain = () => {
 }
 
 
-
-
-
 const Documents = () => {
 
     const styles = StyleSheet.create({

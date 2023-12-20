@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { QuizData } from "./Data";
 import QuizResult from "./QuizResult";
 import "./Quiz.css";
-import { set } from "mongoose";
 import { Box, Container } from "@mui/material";
 import Navbar from "../Navbar";
 function Quiz() {

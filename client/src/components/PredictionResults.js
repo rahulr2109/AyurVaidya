@@ -97,7 +97,7 @@ const Card = ({ name, chance, data1 }) => {
               color: "primary.main",
             }}
           >
-            <strong>Probability </strong>: {(chance * 100).toFixed()}%
+            <strong>Probability </strong>: {(chance * 100).toFixed(2)}%
           </Typography>
         </Box>
       </Box>

@@ -13,7 +13,8 @@ const UserLikePreview = ({ postId, userLikePreview }) => {
     event.stopPropagation();
     setOpen(true);
   };
-  // console.log(userLikePreview);
+  console.log(userLikePreview);
+
   // getUser(userLikePreview);
 
 

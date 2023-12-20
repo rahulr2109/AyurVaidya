@@ -178,7 +178,7 @@ const PredictionResults = ({ data }) => {
             Back
           </Button>
         </Tooltip>
-        <Tooltip title="Download" placement="right">
+        {/* <Tooltip title="Download" placement="right">
           <Button
             sx={{
               color: "black",
@@ -202,7 +202,7 @@ const PredictionResults = ({ data }) => {
           >
             download
           </Button>
-        </Tooltip>
+        </Tooltip> */}
       </Box>
       {[0, 1, 2].map((item) => {
         return (

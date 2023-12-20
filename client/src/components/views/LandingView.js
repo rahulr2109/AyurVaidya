@@ -202,7 +202,7 @@ const LandingView = () => {
                         <Box sx={{ mt: { lg: "30px", md: "10px", sm: "10px", xs: "10px" }, gap: "10px", display: "flex" }}>
                             {isLoggedIn()?.username ? (
                                 <>
-                                    <Button
+                                    <Button LinkComponent={Link} to={"/prediction"}
                                         variant="contained"
                                         sx={{
                                             color: "primary.main",

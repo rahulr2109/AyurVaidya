@@ -40,7 +40,7 @@ const sendFormServer = async (data, user) => {
   }
 };
 
-const getPosts = async (token, query) => {
+const getDisease = async (token, query) => {
   try {
     const res = await fetch(
       BASE_URL + "api/posts?" + new URLSearchParams(query),

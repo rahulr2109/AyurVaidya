@@ -181,15 +181,6 @@ export const diseases = [
     ],
   },
   {
-    disease_name: "Hypoglycemia",
-    references: [
-      "As per Ayurvedic texts, the following herbs are mentioned for managing hypoglycemia:",
-      "Shatavari (Asparagus racemosus) is cited in Charaka Samhita for its 'Madhurashtaka' property, which implies its sweetness can help balance blood sugar levels and aid in managing hypoglycemia.",
-      "Gurmar (Gymnema sylvestre) is referred to in Sushruta Samhita for its 'Madhunashini' property, indicating its potential to regulate and lower blood sugar levels, making it beneficial in addressing hypoglycemic conditions.",
-      "Vijaysar (Pterocarpus marsupium) is mentioned in Ashtanga Hridaya for its 'Pramehaghna' property, known to control glucose levels in the body. It is believed to be useful in managing hypoglycemic episodes.",
-    ],
-  },
-  {
     disease_name: "Hyperthyroidism",
     references: [
       "The following Ayurvedic texts mention the use of certain herbs for managing hyperthyroidism:",
@@ -259,6 +250,69 @@ export const diseases = [
       "Guggulu (Commiphora mukul) is described for its 'sandhivatahara' property in Ayurveda, indicating its effectiveness in alleviating joint-related disorders like osteoarthritis.",
       "Triphala Churna, consisting of three fruits - Amalaki (Emblica officinalis), Bibhitaki (Terminalia bellirica), and Haritaki (Terminalia chebula), is known for its 'vatahar' properties that may help in reducing pain and inflammation associated with osteoarthritis.",
       "Ashwagandha (Withania somnifera) is mentioned in Charaka Samhita as 'balya' and 'shothahara', indicating its role in providing strength and alleviating inflammation, which might aid in managing osteoarthritis symptoms.",
+    ],
+  },
+  {
+    disease_name: "Peptic Ulcer Diseae",
+    references: [
+      "Sushruta Samhita and Ashtanga Hridaya refer to the use of the following herbs for managing peptic ulcer disease:",
+      "Guggulu (Commiphora mukul) is known for its 'deepana' (digestive fire-stimulating) and 'pachana' (digestive) properties. It is believed to assist in healing ulcers and improving gastrointestinal health.",
+      "Triphala Churna, a blend of three fruits (Amla, Haritaki, Bibhitaki), is mentioned in Sushruta Samhita for its 'vrana shodhana' (wound-cleansing) properties. It is thought to help in cleansing and healing ulcers in the digestive tract.",
+      "Ashwagandha (Withania somnifera) is described in Ashtanga Hridaya for its 'balya' (strength-promoting) and 'rasayana' (rejuvenating) effects. It is believed to aid in reducing stress-related gastric ulcers and promoting overall well-being.",
+    ],
+  },
+  {
+    disease_name: "Pneumonia",
+    references: [
+      "Ashtanga Hridaya and Charaka Samhita mention the efficacy of the following herbs and formulation in the treatment of pneumonia:",
+      "Kantakari (Solanum xanthocarpum) is described for its 'kapha-shamaka' (balancing Kapha dosha) properties, believed to aid in respiratory ailments like pneumonia by reducing congestion and facilitating easy breathing.",
+      "Vasa (Adhatoda vasica) is referred to as 'shwasa-kasa-hara' in Ayurveda, indicating its effectiveness in managing respiratory disorders, including pneumonia, by its expectorant and bronchodilator actions.",
+      "Talisadi Churna, a formulation mentioned in Ashtanga Hridaya, contains ingredients like Talisa (Abies webbiana) and other herbs. It is known for its effectiveness in respiratory conditions like pneumonia, helping to relieve cough and congestion.",
+    ],
+  },
+  {
+    disease_name: "Psoriasis",
+    references: [
+      "Ashtanga Hridaya and Charaka Samhita mention the use of the following herbs for managing psoriasis:",
+      "Neem (Azadirachta indica) is described in Ashtanga Hridaya for its 'kandughna' properties, which are believed to alleviate itching and skin-related conditions, including psoriasis.",
+      "Triphala Kwath, a combination of three fruits (Amalaki, Bibhitaki, Haritaki), is referenced in Charaka Samhita for its 'raktashodhana' (blood purifying) properties, aiding in managing skin disorders like psoriasis.",
+      "Guduchi (Tinospora cordifolia) is mentioned in both Ashtanga Hridaya and Charaka Samhita for its 'kusthaghna' properties, indicating its potential to alleviate skin disorders, including psoriasis.",
+    ],
+  },
+  {
+    disease_name: "Tuberculosis",
+    references: [
+      "Ashtanga Hridaya and Charaka Samhita refer to the following herbs for managing Tuberculosis:",
+      "Tulsi (Ocimum sanctum) is recommended in Ashtanga Hridaya for its 'krimighna' (anti-bacterial) and 'shvasahara' (respiratory) properties, which are believed to aid in managing respiratory conditions like Tuberculosis.",
+      "Haridra (Curcuma longa, turmeric) is known in Charaka Samhita for its 'kaphaghna' (reducing Kapha dosha) and 'vranaropana' (healing wounds) properties, which may assist in combating the symptoms of Tuberculosis and promoting recovery.",
+      "Guduchi (Tinospora cordifolia) is described in Charaka Samhita as 'vayasthapana' (rejuvenating) and 'rasayana' (rejuvenative), potentially supporting the immune system and aiding in recovery from Tuberculosis.",
+    ],
+  },
+  {
+    disease_name: "Typhoid",
+    references: [
+      "Ashtanga Hridaya and Charaka Samhita refer to the use of the following herbs for managing Typhoid:",
+      "Musta (Cyperus rotundus) is recommended in Ayurvedic texts for its 'jvaraghna' properties, known to aid in managing fever, including that of Typhoid.",
+      "Kutaja (Holarrhena antidysenterica) is mentioned for its 'jvarahara' effects, indicating its potential in alleviating fever and gastrointestinal symptoms associated with Typhoid.",
+      "Guduchi (Tinospora cordifolia) is regarded in Ashtanga Hridaya for its 'amrita' properties, suggesting its immune-modulating effects, potentially aiding in managing infections such as Typhoid.",
+    ],
+  },
+  {
+    disease_name: "Urinary Tract Infection",
+    references: [
+      "Sushruta Samhita and Charaka Samhita mention the following treatments for urinary tract infections:",
+      "Gokshura (Tribulus terrestris) is known in Sushruta Samhita for its 'mutrala' property, which aids in promoting urine flow and may help alleviate urinary tract infections.",
+      "Chandraprabha Vati is mentioned in both Sushruta Samhita and Charaka Samhita for its efficacy in managing urinary disorders and infections. Its ingredients are believed to have diuretic and antimicrobial properties.",
+      "Punarnavadi Kashayam is referred to in Charaka Samhita, known for its 'mutra-virechana' action, indicating its potential in purifying urine and treating urinary tract infections.",
+    ],
+  },
+  {
+    disease_name: "Varicose Veins",
+    references: [
+      "Sushruta Samhita and Ashtanga Hridaya mention the use of the following herbs for managing varicose veins:",
+      "Guggulu (Commiphora wightii) is known for its 'lekhana' property, which means it helps in scraping off excess fat deposits. This property is believed to aid in managing varicose veins by improving blood circulation and reducing congestion.",
+      "Punarnava (Boerhavia diffusa) is described in Sushruta Samhita for its 'varnya' property, indicating its role in strengthening and rejuvenating tissues. It is suggested to have a positive effect on venous insufficiency, possibly benefiting varicose veins.",
+      "Manjistha (Rubia cordifolia) is referred to as 'varnya' in Ashtanga Hridaya, highlighting its rejuvenating effects on tissues. It is believed to promote healthy blood circulation and help alleviate symptoms associated with varicose veins.",
     ],
   },
 ];

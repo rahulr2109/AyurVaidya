@@ -40,6 +40,22 @@ const sendFormServer = async (data, user) => {
   }
 };
 
+const getPosts = async (token, query) => {
+  try {
+    const res = await fetch(
+      BASE_URL + "api/posts?" + new URLSearchParams(query),
+      {
+        headers: {
+          "x-access-token": token,
+        },
+      }
+    );
+    return await res.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const fetchUserHistoryData = async (user) => {
   try {
     const res = await fetch(BASE_URL + "api/data/history/" + user.userId, {

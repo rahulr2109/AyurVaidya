@@ -24,11 +24,11 @@ import { diseases } from "./References";
 import List from '@mui/material/List';
 // import Accord from "./Accord";
 // import * as React from 'react';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
+// import Accordion from '@mui/material/Accordion';
+// import AccordionSummary from '@mui/material/AccordionSummary';
+// import AccordionDetails from '@mui/material/AccordionDetails';
 // import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link } from "react-router-dom";
 // import { Box, Stack } from '@mui/material';
 
@@ -100,11 +100,11 @@ const ModelCard = ({ name, cm, rgvv, contra }) => {
 
 
 
-const Accord = ({ name, cm, rgvv, contra }) => {
-  return (
+// const Accord = ({ name, cm, rgvv, contra }) => {
+//   return (
 
-    <Accordion>
-      {/* <AccordionSummary
+// <Accordion>
+{/* <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
         id="panel1a-header"
@@ -164,11 +164,11 @@ const Accord = ({ name, cm, rgvv, contra }) => {
           </Stack>
         </Box>
       </AccordionDetails> */}
-    </Accordion>
+{/* </Accordion> */ }
 
 
-  );
-}
+//       );
+// }
 
 
 

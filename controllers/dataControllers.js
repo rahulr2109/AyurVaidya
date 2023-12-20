@@ -90,7 +90,27 @@ const getFormRes = async (req, res) => {
     }
 }
 
+const getDisease = async (req, res) => {
+    try {
+        const postId = req.params.id;
+        const { userId } = req.body;
 
-module.exports = { createPrediction, feedData, userHistory, getFormRes }
+
+
+        const Disease = await NewData.findById(postId)
+            .populate()
+            .lean();
+
+        if (!post) {
+            throw new Error("Disease not found");
+        }
+        return res.json(Disease);
+    } catch (err) {
+        return res.status(400).json({ error: err.message });
+    }
+};
+
+
+module.exports = { createPrediction, feedData, userHistory, getFormRes, getDisease }
 
 

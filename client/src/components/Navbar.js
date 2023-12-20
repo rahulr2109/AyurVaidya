@@ -142,7 +142,7 @@ const Navbar = () => {
               <FaSearch style={{ color: "#0EA220", marginBottom: "4px", marginRight: "5px", height: '25px', width: "25px", cursor: "pointer" }} onClick={handleSubmit} />
               <TextField
                 size="small"
-                placeholder="Search...."
+                placeholder="Search ..."
                 sx={{ flexGrow: 1, maxWidth: 500, mt: "0px" }}
                 onChange={handleChange}
                 value={search}
@@ -257,7 +257,7 @@ const Navbar = () => {
 
           <TextField
             size="small"
-            label="Search for posts..."
+            label="Search..."
             fullWidth
             onChange={handleChange}
             value={search}

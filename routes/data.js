@@ -11,4 +11,8 @@ router.get("/history/:id", verifyToken, dataControllers.userHistory);
 router.post("/get", verifyToken, dataControllers.getFormRes);
 // router.get("/:id", optionallyVerifyToken,dataControllers.getDisease);
 
+
+
+router.delete("/historydelete/:id", verifyToken, dataControllers.userHistorydelete)
+
 module.exports = router;

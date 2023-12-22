@@ -23,6 +23,9 @@ import Documents from "./Documents";
 import { diseases } from "./References";
 import List from '@mui/material/List';
 import { Link } from "react-router-dom";
+import { MdDeleteOutline } from "react-icons/md";
+import { deleteHistory } from "../api/Data";
+import Loading from "./Loading";
 
 
 
@@ -192,10 +195,11 @@ export default function ResultModel({
   isDarawer,
   text,
   mom,
+  id
 }) {
   // console.log(finalRefernce);
   const finalRefernce = getRefernce(finalData);
-  console.log(finalRefernce);
+  // console.log(finalRefernce);
   const [open, setOpen] = React.useState(false);
   const {
     setLoading1,
@@ -210,8 +214,25 @@ export default function ResultModel({
   } = useContext(formResponseData);
 
   // console.log(data)
+  const [loading, setLoading] = React.useState(false);
 
+  const deleteRequest = async () => {
+    setLoading(true)
+    try {
+      const res = await deleteHistory(id, isLoggedIn());
 
+      console.log(res);
+      if (res?.success) {
+
+        setx((x) => !x);
+        setLoading(false)
+      }
+    }
+    catch (e) {
+      console.log(e);
+    }
+
+  }
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -241,18 +262,26 @@ export default function ResultModel({
     <React.Fragment>
       {isDarawer ? (
         <>
-          <ListItemButton onClick={handleClickOpen}>
-            <Stack>
-              {" "}
-              <ListItemText sx={{ color: "primary.main" }} primary={text} />
-              <Typography sx={{ color: "black", fontSize: "12px" }}>
-                {" "}
-                <Moment fromNow>{mom}</Moment>
-              </Typography>
-            </Stack>
-          </ListItemButton>
-        </>
-      ) : (
+          {loading ? <> <Box sx={{ width: "100%", justifyContent: "center", display: "flex", alignItems: "center" }}> <Loading label={"making a delete request.."} /></Box>  </> :
+            <>
+              <ListItemButton onClick={handleClickOpen}>
+
+                <Stack>
+                  {" "}
+                  <ListItemText sx={{ color: "primary.main" }} primary={text} />
+                  <Typography sx={{ color: "black", fontSize: "12px" }}>
+                    {" "}
+                    <Moment fromNow>{mom}</Moment>
+                  </Typography>
+                </Stack>
+
+              </ListItemButton>
+              <IconButton IconButton sx={{ color: "black", fontSize: "12px", mr: "15px", color: "red" }} onClick={deleteRequest}>
+                <MdDeleteOutline sx={{ height: "30px", width: "30px" }} />
+              </IconButton>
+            </>
+          }
+        </>) : (
         <>
           {" "}
           <Button
@@ -264,7 +293,8 @@ export default function ResultModel({
             get Cure {">"}
           </Button>
         </>
-      )}
+      )
+      }
 
       <BootstrapDialog
         onClose={handleClose}
@@ -440,6 +470,6 @@ export default function ResultModel({
           </DialogActions>
         </Box>
       </BootstrapDialog>
-    </React.Fragment>
+    </React.Fragment >
   );
 }

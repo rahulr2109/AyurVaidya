@@ -11,7 +11,7 @@ import ResultModel from './ResultModel'
 
 
 const HomeHistory = ({ data }) => {
-    // console.log(data);
+    console.log(data);
     return (
         <Box style={{
             height: "80vh", backgroundColor: "#F5F5DC", overflowY: "scroll", overflowX: "hidden", borderRight: 1, borderColor: "divider"
@@ -26,7 +26,7 @@ const HomeHistory = ({ data }) => {
                     <ListItem key={index} disablePadding sx={{ borderBottom: 1, borderColor: "divider" }}>
 
 
-                        <ResultModel finalData={newdata?.userData} isDarawer={true} text={newdata?.userData?.modern_name} mom={newdata.createdAt} />
+                        <ResultModel finalData={newdata?.userData} isDarawer={true} text={newdata?.userData?.modern_name} mom={newdata.createdAt} id={newdata?._id} />
 
 
                     </ListItem>

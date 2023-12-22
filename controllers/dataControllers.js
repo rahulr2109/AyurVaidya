@@ -6,6 +6,7 @@ const paginate = require("../util/paginate");
 const diseaseSchema = require("../models/NewData")
 
 const UserHistory = require("../models/UserHistory");
+const NewData = require("../models/NewData");
 
 
 const createPrediction = async (req, res) => {
@@ -90,27 +91,21 @@ const getFormRes = async (req, res) => {
     }
 }
 
-const getDisease = async (req, res) => {
+const userHistorydelete = async (req, res) => {
     try {
-        const postId = req.params.id;
-        const { userId } = req.body;
+        const data = req.params.id;
+        console.log(data);
 
+        const userHistory = await UserHistory.findByIdAndDelete({ _id: data }).lean();
+        return res.status(201).json({ success: "true", size: userHistory.length });
 
-
-        const Disease = await NewData.findById(postId)
-            .populate()
-            .lean();
-
-        if (!post) {
-            throw new Error("Disease not found");
-        }
-        return res.json(Disease);
     } catch (err) {
         return res.status(400).json({ error: err.message });
     }
-};
+}
 
 
-module.exports = { createPrediction, feedData, userHistory, getFormRes, getDisease }
+
+module.exports = { createPrediction, feedData, userHistory, getFormRes, userHistorydelete }
 
 

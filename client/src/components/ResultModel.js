@@ -249,7 +249,7 @@ export default function ResultModel({
       if (res.success === "true") {
         // console.log(res)
         setx((x) => !x);
-        console.log(FormDataModel)
+        // console.log(FormDataModel)
         // handleClose()
       }
     } catch (e) {
@@ -414,8 +414,6 @@ export default function ResultModel({
                       {finalRefernce[0]?.references.map((item) => {
                         return (
                           <>
-
-
                             <List sx={{ border: 1, borderRadius: "4px", gap: "1rem", display: "flex", flexDirection: "column" }}>
 
                               <ListItem>

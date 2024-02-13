@@ -202,10 +202,12 @@ const LandingView = () => {
                         <Box sx={{ mt: { lg: "30px", md: "10px", sm: "10px", xs: "10px" }, gap: "10px", display: "flex" }}>
                             {isLoggedIn()?.username ? (
                                 <>
-                                    <Button LinkComponent={Link} to={"/prediction"}
+                                    <Button
+                                        onClick={() => navigate("/dosha")}
                                         variant="contained"
                                         sx={{
                                             color: "primary.main",
+
                                             backgroundColor: "secondary.main",
                                             width: {
                                                 lg: "140px",

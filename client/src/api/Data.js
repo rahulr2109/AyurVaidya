@@ -40,7 +40,7 @@ const sendFormServer = async (data, user) => {
   }
 };
 
-const getPosts = async (token, query) => {
+const getDisease = async (token, query) => {
   try {
     const res = await fetch(
       BASE_URL + "api/posts?" + new URLSearchParams(query),
@@ -91,7 +91,7 @@ const getFormServer = async (data, user) => {
   }
 };
 
-const imageRecognition = async (data) => {
+const imageRecognition = async (data, user) => {
   try {
     // console.log(JSON.stringify(data));
 
@@ -100,6 +100,7 @@ const imageRecognition = async (data) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        "x-access-token": user.token,
       },
       body: JSON.stringify({ image: data }),
     });
@@ -109,10 +110,25 @@ const imageRecognition = async (data) => {
   }
 };
 
+
+
+const deleteHistory = async (id, user) => {
+  const res = await fetch(BASE_URL + "api/data/historydelete/" + id, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "x-access-token": user.token,
+    }
+  })
+  return await res.json();
+}
+
 export {
   sendForm,
   sendFormServer,
   fetchUserHistoryData,
   getFormServer,
   imageRecognition,
+  deleteHistory
 };

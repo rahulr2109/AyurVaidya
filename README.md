@@ -1,4 +1,4 @@
-**SIH1347 - Ayurvedic Drug Suggestion System**
+**SIH1347 - Ayurvedic Drug Suggestion System (SIH WINNING PROJECT)**
 
 **Introduction**  
 This project was developed as a solution for the Smart India Hackathon (SIH) under the problem statement SIH1347. The goal was to create a software application that suggests drugs and formulations for a disease or pharmacological property based on the teachings of Ayurvedic classical books and repositories. Our team has successfully integrated various features to meet this objective.
